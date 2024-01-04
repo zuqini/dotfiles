@@ -10,8 +10,19 @@ end
 
 -----------------------------config-----------------------------------
 
+
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-  config.default_prog = { "C:/Program Files/PowerShell/7/pwsh.exe" }
+  config.default_prog = { "C:/Program Files/nu/bin/nu.exe" }
+  config.launch_menu = {}
+  table.insert(config.launch_menu, {
+    label = 'PowerShell',
+    args = { 'pwsh.exe', '-NoLogo' },
+  })
+
+  table.insert(config.launch_menu, {
+    label = 'CMD',
+    args = { 'cmd.exe', '-NoLogo' },
+  })
 end
 
 config.scrollback_lines = 50000
@@ -22,5 +33,9 @@ config.color_scheme = 'GruvboxDarkHard'
 
 config.font = wezterm.font('FiraCode Nerd Font')
 config.font_size = 16
+
+config.keys = {
+  { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
+}
 
 return config
