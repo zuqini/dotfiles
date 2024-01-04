@@ -15,7 +15,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.window_background_opacity  = 0.95
 config.color_scheme = 'GruvboxDarkHard'
 
-config.font = wezterm.font("InputMono", { stretch = "Condensed" })
+config.font = wezterm.font("InputMonoCondensed", { stretch = "Condensed" })
 config.font_size = 16
 
 config.keys = {
@@ -34,7 +34,6 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     label = 'CMD',
     args = { 'cmd.exe', '-NoLogo' },
   })
-  config.font = wezterm.font("InputMonoCondensed", { stretch = "Condensed" })
 end
 
 return config
