@@ -13,7 +13,7 @@
 alias nvim="env FLATPAK_ENABLE_SDK_EXT=node18 flatpak run io.neovim.nvim"
 alias vim=nvim
 
-export PATH=$PATH:$HOME/.config/bin
+export PATH=$PATH:$HOME/.local/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
