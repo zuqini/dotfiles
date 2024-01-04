@@ -4,6 +4,9 @@ Set-Alias vim nvim
 Set-Alias vid $HOME\neovide.exe
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
+# disable background highlight
+$PSStyle.OutputRendering = "Plaintext"
+
 $env:PATH = [string]::join(
 	';',
 	$env:PATH,
