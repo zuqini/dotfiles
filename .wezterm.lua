@@ -28,6 +28,7 @@ config.keys = {
 }
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.window_background_opacity  = 0.6
   config.default_prog = { 'C:/Program Files/nu/bin/nu.exe' }
   config.launch_menu = {}
   table.insert(config.launch_menu, {
