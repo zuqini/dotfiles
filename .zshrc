@@ -1,5 +1,9 @@
 alias vim="nvim"
 alias vid="neovide --frame buttonless"
+alias k="kubectl"
+
+source ~/dotfiles/.custom_commands.sh
+
 # alias vid="neovide --frame buttonless --muitigrid" for smooth scroll
 # Custom PATHs ====================================================================
 export PATH=$PATH:$HOME/Development/flutter/bin
