@@ -14,8 +14,8 @@ config.cursor_blink_rate = 0
 config.scrollback_lines = 50000
 config.hide_tab_bar_if_only_one_tab = true
 
-config.window_background_opacity  = 0.75
-config.macos_window_background_blur = 20
+config.window_background_opacity  = 0.85
+config.macos_window_background_blur = 30
 config.win32_system_backdrop = 'Acrylic'
 
 config.color_scheme = 'GruvboxDarkHard'
