@@ -30,7 +30,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.window_background_opacity  = 0.95
 config.color_scheme = 'GruvboxDarkHard'
 
-config.font = wezterm.font('FiraCode Nerd Font')
+config.font = wezterm.font("InputMono Nerd Font", { stretch = "Condensed" })
 config.font_size = 16
 
 config.keys = {
