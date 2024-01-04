@@ -10,6 +10,7 @@ set incsearch
 set hlsearch
 set ignorecase smartcase
 set nofixendofline
+set scrolloff=8
 set cursorline
 
 " block insert
@@ -28,7 +29,6 @@ inoremap <F1> <nop>
 " buffers
 nnoremap <leader>w :w<CR>
 nnoremap <leader>W :wq<CR>
-
 nnoremap <leader>R :so $MYVIMRC<CR>
 
 nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
@@ -53,19 +53,34 @@ nnoremap <leader>u :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " Clipboard Copy Pasting
 " nnoremap <leader>y "+y doesn't work for some reason
 " directly map y with "+ register instead
-nnoremap y "+y
-nnoremap Y "+y$
-vnoremap y "+y
-vnoremap Y "+Y
-nnoremap d "+d
-nnoremap D "+D
-vnoremap d "+d
-vnoremap D "+D
+nnoremap <leader>y "+y
+nnoremap <leader>Y "+y$
+vnoremap <leader>y "+y
+vnoremap <leader>Y "+Y
+nnoremap <leader>c "+y
+nnoremap <leader>C "+y$
+vnoremap <leader>c "+y
+vnoremap <leader>C "+Y
+nnoremap <leader>x "+d
+nnoremap <leader>X "+D
+vnoremap <leader>x "+d
+vnoremap <leader>X "+D
+nnoremap <leader>v "+p
+nnoremap <leader>V "+P
+vnoremap <leader>v "+p
+vnoremap <leader>V "+P
+
+" Delete into oblivion
+nnoremap <leader>d "_d
+nnoremap <leader>D "_D
+vnoremap <leader>d "_d
+vnoremap <leader>D "_D
+
 " Yank Pasting only
-nnoremap p "+p
-nnoremap P "+P
-vnoremap p "+p
-vnoremap P "+P
+nnoremap <leader>p "0p
+nnoremap <leader>P "0P
+vnoremap <leader>p "0p
+vnoremap <leader>P "0P
 
 " centering
 " set scrolloff=999
