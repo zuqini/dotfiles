@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 
 local config = {}
 
@@ -27,6 +28,11 @@ config.line_height = 1
 
 config.keys = {
   { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
+}
+
+config.keys = {
+  -- paste from the clipboard
+  { key = 'V', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
 }
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
