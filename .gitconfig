@@ -1,6 +1,8 @@
 [pager]
 	branch = false
 [alias]
+	dg = log --all --decorate --oneline --graph
+
 	lg = lgs --all
 	lg2 = lgs2 --all
 	lg3 = lgs3 --all
