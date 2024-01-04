@@ -10,8 +10,9 @@
 # Great, let's install org.freedesktop.Sdk.Extension.node18
 #   flatpak install flathub org.freedesktop.Sdk.Extension.node18
 # run nvim with node18 enabled
-alias nvim="env FLATPAK_ENABLE_SDK_EXT=node18 flatpak run io.neovim.nvim"
-alias vim=nvim
+alias fvim="env FLATPAK_ENABLE_SDK_EXT=node18 flatpak run io.neovim.nvim"
+alias db=distrobox
+alias dbe="distrobox enter ubuntu-22-04"
 
 export PATH=$PATH:$HOME/.local/bin
 
