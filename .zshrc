@@ -1,5 +1,6 @@
 alias vim="nvim"
-alias vid="neovide --frame buttonless --multigrid"
+alias vid="neovide --frame buttonless"
+# alias vid="neovide --frame buttonless --muitigrid" for smooth scroll
 # Custom PATHs ====================================================================
 export PATH=$PATH:$HOME/Development/flutter/bin
 export PATH=$PATH:$HOME/.dotnet/tools
