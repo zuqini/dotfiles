@@ -15,6 +15,7 @@ end
 
 config.color_scheme = 'GruvboxDarkHard'
 config.window_background_opacity  = 0.95
-  config.font = wezterm.font('FiraCode Nerd Font')
+config.font = wezterm.font('FiraCode Nerd Font')
+config.font_size = 16
 
 return config
