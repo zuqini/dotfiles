@@ -16,18 +16,9 @@ set nofixendofline
 set scrolloff=8
 set cursorline
 
-" block insert
-" set guicursor=n-v-c-i-ci-ve:block,r-cr:hor20,o:hor50
-"   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-"   \,sm:block-blinkwait175-blinkoff150-blinkon175
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
-
-
-" disable F1 as it's easy to accidentally hit on the touchbar
-nnoremap <F1> <nop>
-inoremap <F1> <nop>
 
 nnoremap <left> h
 nnoremap <down> j
@@ -35,17 +26,11 @@ nnoremap <up> k
 nnoremap <right> l
 
 " buffers
-nnoremap <leader>w :w<CR>
-nnoremap <leader>W :wq<CR>
+nnoremap <leader>w :up<CR>
+nnoremap <leader>W :up<CR>:q<CR>
 nnoremap <leader>R :so $MYVIMRC<CR>
 
 nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
-
-" Movement
-" nnoremap <C-k> 10k
-" nnoremap <C-j> 10j
-" vnoremap <C-k> 10k
-" vnoremap <C-j> 10j
 
 " more logical Y command (C => c$ and D => d$
 " note: this is default in nvim. keeping mapping for vim compatibility
@@ -54,9 +39,6 @@ nnoremap Y y$
 nnoremap <silent><F5> :mod<CR>
 vnoremap > >gv
 vnoremap < <gv
-
-" highlight without moving
-nnoremap <leader>u :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
 " Clipboard Copy Pasting
 " nnoremap <leader>y "+y doesn't work for some reason
