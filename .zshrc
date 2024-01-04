@@ -1,5 +1,8 @@
 alias vim="nvim"
 alias vid="neovide --frame buttonless"
+# For Godot Engine
+# In "Editor Sessings/Text Editor/External", set Exec Flags to --server ./godothost --remote-send "<C-N>:n {file}<CR>{line}G{col}|"
+alias vimgd="nvim --listen ./godothost"
 alias k="kubectl"
 
 source ~/dotfiles/.custom_commands.sh
