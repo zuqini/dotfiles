@@ -9,6 +9,8 @@ if wezterm.config_builder then
 end
 
 -----------------------------config-----------------------------------
+config.cursor_blink_rate = 0
+
 config.scrollback_lines = 50000
 config.hide_tab_bar_if_only_one_tab = true
 
