@@ -92,9 +92,6 @@ plugins=(
   zsh-autosuggestions
 )
 
-bindkey '^[[Z' complete-word
-bindkey '^ ' autosuggest-accept
-
 source $ZSH/oh-my-zsh.sh
 
 # The plugin will auto execute this zvm_after_init function
