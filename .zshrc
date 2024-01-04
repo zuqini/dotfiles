@@ -132,4 +132,5 @@ function zvm_after_init() {
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
   bindkey '^[[Z' forward-word
+  bindkey '^H' backward-kill-word
 }
