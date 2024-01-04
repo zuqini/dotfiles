@@ -11,6 +11,8 @@
 #   flatpak install flathub org.freedesktop.Sdk.Extension.node18
 # run nvim with node18 enabled
 alias fvim="env FLATPAK_ENABLE_SDK_EXT=node18 flatpak run io.neovim.nvim"
+alias vim=nvim
+
 alias db=distrobox
 alias dbe="distrobox enter ubuntu-22-04"
 
