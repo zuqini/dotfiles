@@ -1,4 +1,7 @@
 let mapleader = " "
+set easymotion
+
+nmap s <Plug>(easymotion-s2)
 
 set mouse=a
 set hidden
