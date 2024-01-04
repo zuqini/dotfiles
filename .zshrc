@@ -1,4 +1,5 @@
 alias vim="nvim"
+alias vid="neovide --multigrid"
 # Custom PATHs ====================================================================
 export PATH=$PATH:$HOME/Development/flutter/bin
 export PATH=$PATH:$HOME/.dotnet/tools
