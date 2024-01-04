@@ -2,19 +2,13 @@
 
 ## Setup
 
-zsh
+##### zsh/bash
 ```
 git clone --recurse-submodules --remote-submodules https://github.com/zuqini/dotfiles.git ~/dotfiles
 ~/dotfiles/install.sh
 ```
 
-nushell
-```
-git clone --recurse-submodules --remote-submodules https://github.com/zuqini/dotfiles.git ~/dotfiles
-nu ~/dotfiles/install.nu
-```
-
-Windows
+##### Windows
 ```
 git clone --recurse-submodules --remote-submodules https://github.com/zuqini/dotfiles.git C:\Users\{username}\dotfiles
 
@@ -31,16 +25,31 @@ mklink C:\Users\{username}\AppData\Roaming\nushell\config.nu C:\Users\lizuq\dotf
 mklink C:\Users\{username}\AppData\Roaming\nushell\env.nu C:\Users\lizuq\dotfiles\nushell\env.nu
 ```
 
-## Increase key-repeat rate
+### Miscellaneous
 
-#### MacOS
+#### tmux-256color not displaying correctly
+
+It's likely that `tmux-256color` is somehow missing in the `.terminfo`. See https://github.com/tmux/tmux/issues/1257#issuecomment-581378716
+```
+$ brew install ncurses
+$ /usr/local/opt/ncurses/bin/infocmp tmux-256color > ~/tmux-256color.info
+$ tic -xe tmux-256color tmux-256color.info
+# This creates a complied entry in ~/.terminfo
+$ infocmp tmux-256color | head
+#       Reconstructed via infocmp from file: /Users/libin/.terminfo/74/tmux-256color
+tmux-256color|tmux with 256 colors,
+```
+
+#### Increase key-repeat rate
+
+##### MacOS
 
 ```
 defaults write -g InitialKeyRepeat -int 12 # normal minimum is 15 (225 ms). note: 10 is too fast, you won't be able to log in due to double inputs.
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 ```
 
-#### Win11
+##### Win11
 
 Go into regedit.exe and edit:
 ```
