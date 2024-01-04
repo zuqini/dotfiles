@@ -2,11 +2,16 @@
 
 ## Setup
 
-Work in progress
-
+Unix
 ```
-$ git clone --recurse-submodules --remote-submodules https://github.com/zuqini/dotfiles.git ~/dotfiles
-$ ~/dotfiles/install.sh
+git clone --recurse-submodules --remote-submodules https://github.com/zuqini/dotfiles.git ~/dotfiles
+~/dotfiles/install.sh
+```
+
+Windows
+```
+git clone --recurse-submodules --remote-submodules https://github.com/zuqini/dotfiles.git C:\Users\{username}\dotfiles
+New-Item -ItemType SymbolicLink -path ~\AppData\Local\nvim\ -value C:\Users\{username}\dotfiles\nvim\
 ```
 
 ## Increase key-repeat rate
