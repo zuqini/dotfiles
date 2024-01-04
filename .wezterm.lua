@@ -50,7 +50,7 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     args = { 'cmd.exe', '-NoLogo' },
   })
 elseif wezterm.target_triple == 'x86_64-apple-darwin' or wezterm.target_triple == 'aarch64-apple-darwin' then
-  config.window_background_opacity  = 0.85
+  config.window_background_opacity  = 0.75
 end
 
 return config
