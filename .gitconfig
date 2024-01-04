@@ -12,6 +12,7 @@
 	lg2 = lgs2 --all
 	lg3 = lgs3 --all
 
+	lls = lgs
 	lgs = lg-specific
 	lgs2 = lg-specific2
 	lgs3 = lg-specific3
