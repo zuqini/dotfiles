@@ -9,6 +9,18 @@ if wezterm.config_builder then
 end
 
 -----------------------------config-----------------------------------
+config.scrollback_lines = 50000
+config.hide_tab_bar_if_only_one_tab = true
+
+config.window_background_opacity  = 0.95
+config.color_scheme = 'GruvboxDarkHard'
+
+config.font = wezterm.font("InputMono Nerd Font", { stretch = "Condensed" })
+config.font_size = 16
+
+config.keys = {
+  { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
+}
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_prog = { 'C:/Program Files/nu/bin/nu.exe' }
@@ -22,19 +34,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     label = 'CMD',
     args = { 'cmd.exe', '-NoLogo' },
   })
+  -- for some reason windows cannot load InputMono Condensed without the Condensed suffix
+  config.font = wezterm.font("InputMonoCondensed Nerd Font", { stretch = "Condensed" })
 end
-
-config.scrollback_lines = 50000
-config.hide_tab_bar_if_only_one_tab = true
-
-config.window_background_opacity  = 0.95
-config.color_scheme = 'GruvboxDarkHard'
-
-config.font = wezterm.font("InputMono Nerd Font", { stretch = "Condensed" })
-config.font_size = 16
-
-config.keys = {
-  { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
-}
 
 return config
