@@ -15,7 +15,7 @@ config.cursor_blink_rate = 0
 config.scrollback_lines = 50000
 config.hide_tab_bar_if_only_one_tab = true
 
-config.window_background_opacity  = 0.85
+config.window_background_opacity  = 0.95
 config.macos_window_background_blur = 30
 config.win32_system_backdrop = 'Acrylic'
 
@@ -48,6 +48,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     label = 'CMD',
     args = { 'cmd.exe', '-NoLogo' },
   })
+elseif wezterm.target_triple == 'x86_64-apple-darwin' or wezterm.target_triple == 'aarch64-apple-darwin' then
+  config.window_background_opacity  = 0.85
 end
 
 return config
