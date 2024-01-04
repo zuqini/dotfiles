@@ -1,3 +1,3 @@
-ln -s -f ~/.dotfiles/.config/nvim ~/.config/nvim
-ln -s -f ~/.dotfiles/.tmux_themes ~/.tmux_themes
-ln -s -f ~/.dotfiles/.tmux.conf ~/.tmux.conf
+ln -s ~/.dotfiles/.config/nvim ~/.config
+ln -s ~/.dotfiles/.tmux_themes ~
+ln -s ~/.dotfiles/.tmux.conf ~
