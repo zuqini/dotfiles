@@ -1,3 +1,20 @@
+# install brew
+which -s brew
+if [[ $? != 0 ]] ; then
+  echo "Installing Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+  echo "Homebrew already installed"
+fi
+
+which -s nu
+if [[ $? != 0 ]] ; then
+  echo "Installing nushell"
+  brew install nushell
+else
+  echo "nushell already installed"
+fi
+
 mkdir ~/.config
 
 # vim
@@ -10,6 +27,10 @@ ln -s ~/dotfiles/.tmux.conf ~
 # terminal configs
 ln -s ~/dotfiles/kitty ~/.config
 ln -s ~/dotfiles/.wezterm.lua ~
+
+# nushell configs
+ln -s ~/dotfiles/nushell/config.nu ~/Library/Application\ Support/nushell
+ln -s ~/dotfiles/nushell/env.nu ~/Library/Application\ Support/nushell
 
 # zsh plugins
 git clone https://github.com/jeffreytse/zsh-vi-mode \
