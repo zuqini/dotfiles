@@ -14,6 +14,8 @@ config.hide_tab_bar_if_only_one_tab = true
 
 config.window_background_opacity  = 0.78
 config.macos_window_background_blur = 20
+config.win32_system_backdrop = 'Acrylic'
+
 config.color_scheme = 'GruvboxDarkHard'
 
 config.font = wezterm.font("InputMonoCondensed", { stretch = "Condensed" })
