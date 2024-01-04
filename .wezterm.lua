@@ -1,11 +1,6 @@
--- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
--- This table will hold the configuration.
 local config = {}
-
--- Spawn a fish shell in login mode
--- config.default_prog = { '/usr/local/bin/fish', '-l' }
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
@@ -13,10 +8,13 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- This is where you actually apply your config choices
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.default_prog = { "C:/Program Files/PowerShell/7/pwsh.exe" }
+end
 
--- For example, changing the color scheme:
-config.color_scheme = 'AdventureTime'
 
--- and finally, return the configuration to wezterm
+config.color_scheme = 'GruvboxDarkHard'
+config.window_background_opacity  = 0.95
+  config.font = wezterm.font('FiraCode Nerd Font')
+
 return config
