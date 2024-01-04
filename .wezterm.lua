@@ -20,8 +20,10 @@ config.win32_system_backdrop = 'Acrylic'
 
 config.color_scheme = 'GruvboxDarkHard'
 
-config.font = wezterm.font("InputMonoCondensed", { stretch = "Condensed" })
+-- config.font = wezterm.font("InputMonoCondensed", { stretch = "Condensed" })
+config.font = wezterm.font("Iosevka Custom")
 config.font_size = 16
+config.line_height = 1
 
 config.keys = {
   { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
