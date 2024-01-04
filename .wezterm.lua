@@ -15,6 +15,7 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
 end
 
 config.scrollback_lines = 50000
+config.hide_tab_bar_if_only_one_tab = true
 
 config.window_background_opacity  = 0.95
 config.color_scheme = 'GruvboxDarkHard'
