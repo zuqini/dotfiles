@@ -42,6 +42,9 @@ ln -s ~/dotfiles/.wezterm.lua ~
 ln -s ~/dotfiles/nushell/config.nu ~/Library/Application\ Support/nushell
 ln -s ~/dotfiles/nushell/env.nu ~/Library/Application\ Support/nushell
 
+# global git configs
+ln -s ~/dotfiles/git ~/.config/
+
 # zsh plugins
 git clone https://github.com/jeffreytse/zsh-vi-mode \
   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vi-mode
