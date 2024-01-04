@@ -7,6 +7,16 @@ else
   echo "Homebrew already installed"
 fi
 
+# wezterm
+which -s wezterm
+if [[ $? != 0 ]] ; then
+  echo "Installing wezterm"
+  brew install wezterm
+else
+  echo "wezterm already installed"
+fi
+
+# nu
 which -s nu
 if [[ $? != 0 ]] ; then
   echo "Installing nushell"
