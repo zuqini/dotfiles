@@ -17,13 +17,13 @@ else
 fi
 
 # nu
-which -s nu
-if [[ $? != 0 ]] ; then
-  echo "Installing nushell"
-  brew install nushell
-else
-  echo "nushell already installed"
-fi
+# which -s nu
+# if [[ $? != 0 ]] ; then
+#   echo "Installing nushell"
+#   brew install nushell
+# else
+#   echo "nushell already installed"
+# fi
 
 mkdir ~/.config
 
@@ -39,8 +39,8 @@ ln -s ~/dotfiles/kitty ~/.config
 ln -s ~/dotfiles/.wezterm.lua ~
 
 # nushell configs
-ln -s ~/dotfiles/nushell/config.nu ~/Library/Application\ Support/nushell
-ln -s ~/dotfiles/nushell/env.nu ~/Library/Application\ Support/nushell
+# ln -s ~/dotfiles/nushell/config.nu ~/Library/Application\ Support/nushell
+# ln -s ~/dotfiles/nushell/env.nu ~/Library/Application\ Support/nushell
 
 # global git configs
 ln -s ~/dotfiles/git ~/.config/

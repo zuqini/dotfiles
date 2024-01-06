@@ -14,7 +14,6 @@ config.cursor_blink_rate = 0
 
 config.scrollback_lines = 50000
 config.hide_tab_bar_if_only_one_tab = true
-config.window_decorations = 'RESIZE'
 
 config.window_background_opacity  = 0.95
 config.macos_window_background_blur = 30
@@ -38,7 +37,7 @@ config.keys = {
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.window_background_opacity  = 0.6
-  config.default_prog = { 'C:/Program Files/nu/bin/nu.exe' }
+  config.default_prog = { 'pwsh.exe' }
   config.launch_menu = {}
   table.insert(config.launch_menu, {
     label = 'PowerShell',
@@ -51,6 +50,7 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   })
 elseif wezterm.target_triple == 'x86_64-apple-darwin' or wezterm.target_triple == 'aarch64-apple-darwin' then
   config.window_background_opacity  = 0.75
+  config.window_decorations = 'RESIZE'
 end
 
 return config
