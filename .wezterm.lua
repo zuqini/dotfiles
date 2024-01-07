@@ -35,7 +35,8 @@ config.keys = {
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.window_background_opacity  = 0.8
   config.win32_system_backdrop = 'Acrylic'
-  config.default_prog = { 'C:/Program Files/nu/bin/nu.exe' }
+  -- config.default_prog = { 'C:/Program Files/nu/bin/nu.exe' }
+  config.default_prog = { 'pwsh.exe' }
   config.launch_menu = {}
   table.insert(config.launch_menu, {
     label = 'PowerShell',
