@@ -33,10 +33,10 @@ config.keys = {
 }
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-  config.window_background_opacity  = 0.0
-  -- config.win32_system_backdrop = 'Acrylic'
+  config.window_background_opacity  = 0.8
+  config.win32_system_backdrop = 'Acrylic'
   -- config.win32_system_backdrop = 'Mica'
-  config.win32_system_backdrop = 'Tabbed'
+  -- config.win32_system_backdrop = 'Tabbed'
   -- config.default_prog = { 'C:/Program Files/nu/bin/nu.exe' }
   config.default_prog = { 'pwsh.exe' }
   config.launch_menu = {}
