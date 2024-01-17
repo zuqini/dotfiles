@@ -22,13 +22,10 @@ config.color_scheme = 'terafox'
 config.font = wezterm.font("Iosevka Custom")
 config.font_size = 16
 config.line_height = 1
+config.use_fancy_tab_bar = false
 
 config.keys = {
   { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
-}
-
-config.keys = {
-  -- paste from the clipboard
   { key = 'V', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
 }
 
