@@ -13,7 +13,9 @@ end
 config.cursor_blink_rate = 0
 
 config.scrollback_lines = 50000
+config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
+config.tab_bar_at_bottom = true
 
 config.window_background_opacity = 0.95
 config.color_scheme = 'terafox'
@@ -22,7 +24,6 @@ config.color_scheme = 'terafox'
 config.font = wezterm.font("Iosevka Custom")
 config.font_size = 16
 config.line_height = 1
-config.use_fancy_tab_bar = false
 
 config.keys = {
   { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
