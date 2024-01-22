@@ -23,10 +23,10 @@ config.color_scheme = 'terafox'
 
 -- config.font = wezterm.font("InputMonoCondensed", { stretch = "Condensed" })
 config.font = wezterm.font("Iosevka Custom")
-config.font_size = 16
+config.font_size = 14
 config.line_height = 1
 config.underline_position = "280%"
-config.underline_thickness = "200%"
+config.underline_thickness = "220%"
 
 config.keys = {
   { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
