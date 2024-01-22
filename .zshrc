@@ -1,8 +1,9 @@
-alias vim="nvim"
+# https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
+alias vim="env TERM=wezterm nvim"
 alias vid="neovide --frame buttonless"
 # For Godot Engine
 # In "Editor Sessings/Text Editor/External", set Exec Flags to --server ./godothost --remote-send "<C-N>:n {file}<CR>{line}G{col}|"
-alias vimgd="nvim --listen ./godothost"
+alias vimgd="vim --listen ./godothost"
 
 source ~/dotfiles/.custom_commands.sh
 
