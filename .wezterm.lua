@@ -10,6 +10,7 @@ if wezterm.config_builder then
 end
 
 -----------------------------config-----------------------------------
+config.term = "wezterm"
 config.cursor_blink_rate = 0
 
 config.scrollback_lines = 50000
@@ -24,6 +25,8 @@ config.color_scheme = 'terafox'
 config.font = wezterm.font("Iosevka Custom")
 config.font_size = 16
 config.line_height = 1
+config.underline_position = "280%"
+config.underline_thickness = "200%"
 
 config.keys = {
   { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
@@ -31,6 +34,7 @@ config.keys = {
 }
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.term = nil
   config.window_background_opacity  = 0.8
   config.win32_system_backdrop = 'Acrylic'
   -- config.win32_system_backdrop = 'Mica'
