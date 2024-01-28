@@ -32,7 +32,7 @@ ln -s ~/dotfiles/nvim ~/.config
 ln -s ~/dotfiles/.ideavimrc ~
 
 # ctags
-ln -s ~/dotfiles/.ctags.d ~
+# ln -s ~/dotfiles/.ctags.d ~
 
 # tmux
 ln -s ~/dotfiles/.tmux.conf ~
