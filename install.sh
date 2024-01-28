@@ -31,6 +31,9 @@ mkdir ~/.config
 ln -s ~/dotfiles/nvim ~/.config
 ln -s ~/dotfiles/.ideavimrc ~
 
+# doom emacs
+ln -s ~/dotfiles/.doom.d ~/
+
 # ctags
 # ln -s ~/dotfiles/.ctags.d ~
 
