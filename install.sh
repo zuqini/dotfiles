@@ -32,7 +32,7 @@ ln -s ~/dotfiles/nvim ~/.config
 ln -s ~/dotfiles/.ideavimrc ~
 
 # doom emacs
-ln -s ~/dotfiles/.doom.d ~/
+ln -s ~/dotfiles/doom ~/.config
 
 # ctags
 # ln -s ~/dotfiles/.ctags.d ~
