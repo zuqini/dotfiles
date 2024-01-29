@@ -10,7 +10,6 @@ if wezterm.config_builder then
 end
 
 -----------------------------config-----------------------------------
-config.term = "wezterm"
 config.cursor_blink_rate = 0
 
 config.scrollback_lines = 50000
@@ -34,7 +33,6 @@ config.keys = {
 }
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-  config.term = nil
   config.window_background_opacity  = 0.8
   config.win32_system_backdrop = 'Acrylic'
   -- config.win32_system_backdrop = 'Mica'
