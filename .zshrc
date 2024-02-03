@@ -15,7 +15,7 @@ export PATH=$PATH:$HOME/Development/flutter/bin
 export PATH=$PATH:$HOME/.dotnet/tools
 export PATH=$PATH:/Applications/love.app/Contents/MacOS/
 # NVIM Language Servers on the path for Helix
-export PATH=$PATH:$HOME/.local/share/nvim/mason/packages/jdtls:/Users/zachli/.local/share/nvim/mason/packages/lua-language-server:/Users/zachli/.local/share/nvim/mason/packages/pyright:/Users/zachli/.local/share/nvim/mason/packages/jsonlsp:/Users/zachli/.local/share/nvim/mason/packages/rust-analyzer:/Users/zachli/.local/share/nvim/mason/packages/typescript-language-server
+export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 # Framework override for C# LSP
 export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current
 # export FrameworkPathOverride=~/.config/coc/extensions/coc-omnisharp-data/server/omnisharp
