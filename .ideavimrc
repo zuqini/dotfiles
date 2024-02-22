@@ -30,7 +30,7 @@ nnoremap <leader>w :up<CR>
 nnoremap <leader>W :up<CR>:q<CR>
 nnoremap <leader>R :so $MYVIMRC<CR>
 
-nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
+nnoremap <silent> <C-l> :nohlsearch<CR>
 
 " more logical Y command (C => c$ and D => d$
 " note: this is default in nvim. keeping mapping for vim compatibility
