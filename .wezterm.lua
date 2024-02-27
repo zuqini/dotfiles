@@ -28,7 +28,7 @@ config.underline_position = "280%"
 config.underline_thickness = "220%"
 
 config.keys = {
-  { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
+  { key = 'm', mods = 'ALT', action = wezterm.action.ShowLauncher },
   { key = 'V', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
 }
 
