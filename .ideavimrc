@@ -66,6 +66,8 @@ nnoremap <leader>D "_D
 vnoremap <leader>d "_d
 vnoremap <leader>D "_D
 
+xnoremap p "_dP
+
 " Yank Pasting only
 nnoremap <leader>p "0p
 nnoremap <leader>P "0P
