@@ -39,6 +39,7 @@ ln -s ~/dotfiles/doom ~/.config
 
 # tmux
 ln -s ~/dotfiles/.tmux.conf ~
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # terminal configs
 ln -s ~/dotfiles/kitty ~/.config
