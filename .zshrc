@@ -9,6 +9,7 @@ source ~/dotfiles/.custom_commands.sh
 
 # alias vid="neovide --frame buttonless --muitigrid" for smooth scroll
 # Custom PATHs ====================================================================
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 export PATH=/usr/local/opt/llvm/bin:$PATH
 export PATH=$PATH:$HOME/.config/emacs/bin
 export PATH=$PATH:$HOME/Development/flutter/bin
