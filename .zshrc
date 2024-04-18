@@ -7,6 +7,9 @@ alias vimgd="vim --listen ./godothost"
 
 source ~/dotfiles/.custom_commands.sh
 
+# completion
+fpath+=~/.zfunc
+
 # alias vid="neovide --frame buttonless --muitigrid" for smooth scroll
 # Custom PATHs ====================================================================
 export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
