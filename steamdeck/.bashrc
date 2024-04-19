@@ -19,6 +19,9 @@ export PATH=$PATH:$HOME/.local/bin
 alias db=distrobox
 alias dbe="distrobox enter ubuntu-22-04"
 
+# bob
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
