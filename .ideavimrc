@@ -57,7 +57,7 @@ vnoremap <leader>x "+d
 vnoremap <leader>X "+D
 nnoremap <leader>v "+p
 nnoremap <leader>V "+P
-vnoremap <leader>v "+p
+vnoremap <leader>v "_d"+P
 vnoremap <leader>V "+P
 
 " Delete into oblivion
