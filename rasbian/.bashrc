@@ -1,4 +1,6 @@
 alias vim=nvim
+export PATH=/home/zuqini/.local/share/bob/nvim-bin:$PATH
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -112,8 +114,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-export PATH=/home/zuqini/.local/share/bob/nvim-bin:$PATH
+. "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
