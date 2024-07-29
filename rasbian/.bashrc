@@ -122,4 +122,3 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH=/home/zuqini/.fzf/bin/:$PATH
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-. "$HOME/.cargo/env"
