@@ -24,18 +24,31 @@ else
   echo "stow already installed"
 fi
 
+# tiling window manager
 which -s aerospace
 if [[ $? != 0 ]] ; then
-  echo "Installing stow"
+  echo "Installing aerospace"
   brew install --cask nikitabobko/tap/aerospace
 else
   echo "aerospace already installed"
 fi
 
+which -s sketchybar
+if [[ $? != 0 ]] ; then
+  echo "Installing sketchybar"
+  brew tap FelixKratz/formulae
+  brew install sketchybar
+  brew install --cask font-hack-nerd-font
+  brew services start sketchybar
+else
+  echo "sketchybar already installed"
+fi
+
 cd ~/dotfiles
 
-# tiling window manager
+# macos tiling windows manager and bar
 stow aerospace
+stow sketchybar
 
 # editors
 stow nvim idea doom ctags
