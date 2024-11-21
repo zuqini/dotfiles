@@ -24,7 +24,18 @@ else
   echo "stow already installed"
 fi
 
+which -s aerospace
+if [[ $? != 0 ]] ; then
+  echo "Installing stow"
+  brew install --cask nikitabobko/tap/aerospace
+else
+  echo "aerospace already installed"
+fi
+
 cd ~/dotfiles
+
+# tiling window manager
+stow aerospace
 
 # editors
 stow nvim idea doom ctags
