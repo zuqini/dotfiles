@@ -60,7 +60,9 @@ inner.horizontal = 8
 inner.vertical =   8
 outer.left =       8
 outer.bottom =     8
-outer.top =        [{ monitor."^built-in retina display$" = 16 }, 32]
+# notch height is 32, sketchybar is 32 + 4 offset, 8 gap is 4+8=12
+# sketchybar is 32 + 4 offset, 8 gap withought notch is 32+4+8=44
+outer.top =        [{ monitor."^built-in retina display$" = 12 }, 44]
 outer.right =      8
 
 # 'main' binding mode declaration
