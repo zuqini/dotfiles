@@ -16,7 +16,7 @@ sketchybar --bar \
     position=top \
     height=32 \
     blur_radius=5 \
-    color=0xcc254147 \
+    color=0xee254147 \
     margin=8 \
     y_offset=4 \
     corner_radius=16
@@ -49,7 +49,7 @@ sketchybar --add item apple.logo left \
         popup.y_offset=0 \
         popup.blur_radius=5 \
         popup.background.corner_radius=0 \
-        popup.background.color=0xdd254147 \
+        popup.background.color=0xdd1d3337 \
     --subscribe apple.logo mouse.entered mouse.exited.global
 
 sketchybar --add item apple.preferences popup.apple.logo \
