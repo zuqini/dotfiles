@@ -99,10 +99,10 @@ outer.right =      8
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
-alt-leftSquareBracket = 'focus-monitor prev'
-alt-rightSquareBracket = 'focus-monitor next'
-alt-shift-leftSquareBracket = 'workspace prev'
-alt-shift-rightSquareBracket = 'workspace next'
+alt-leftSquareBracket = 'workspace prev'
+alt-rightSquareBracket = 'workspace next'
+alt-shift-leftSquareBracket = 'focus-monitor prev'
+alt-shift-rightSquareBracket = 'focus-monitor next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-left = 'focus left'
