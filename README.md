@@ -15,14 +15,8 @@ git clone --recurse-submodules --remote-submodules https://github.com/zuqini/dot
 # powershell
 New-Item -ItemType SymbolicLink -path ~\AppData\Local\nvim\ -value C:\Users\{username}\dotfiles\nvim\.config\nvim
 New-Item -ItemType SymbolicLink -path ~ -name .wezterm.lua -value C:\Users\{username}\dotfiles\wezterm\.wezterm.lua
-New-Item -ItemType SymbolicLink -path ~\Documents\WindowsPowerShell -name profile.ps1 -value C:\Users\{username}\dotfiles\platforms\win\profile.ps1
-New-Item -ItemType SymbolicLink -path ~\Documents\PowerShell -name profile.ps1 -value C:\Users\{username}\dotfiles\platforms\win\profile.ps1
-
-# cmd/nushell
-mklink /D C:\Users\{username}\AppData\Local\nvim\ C:\Users\{username}\dotfiles\nvim\.config\nvim
-mklink C:\Users\{username}\.wezterm.lua C:\Users\{username}\dotfiles\wezterm\.wezterm.lua
-mklink C:\Users\{username}\Documents\WindowsPowerShell\profile.ps1 C:\Users\{username}\dotfiles\platforms\win\profile.ps1
-mklink C:\Users\{username}\Documents\PowerShell\profile.ps1 C:\Users\{username}\dotfiles\platforms\win\profile.ps1
+New-Item -ItemType SymbolicLink -path ~\Documents\WindowsPowerShell -name profile.ps1 -value C:\Users\{username}\dotfiles\misc\win\profile.ps1
+New-Item -ItemType SymbolicLink -path ~\Documents\PowerShell -name profile.ps1 -value C:\Users\{username}\dotfiles\misc\win\profile.ps1
 ```
 
 ### Miscellaneous
