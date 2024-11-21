@@ -47,9 +47,9 @@ sketchybar --add item apple.logo left \
         label.drawing=off \
         script="$CONFIG_DIR/plugins/apple_logo.sh" \
         popup.y_offset=0 \
-        blur_radius=5 \
-        popup.background.corner_radius=3 \
-        popup.background.color=0xcc254147 \
+        popup.blur_radius=5 \
+        popup.background.corner_radius=0 \
+        popup.background.color=0xdd254147 \
     --subscribe apple.logo mouse.entered mouse.exited.global
 
 sketchybar --add item apple.preferences popup.apple.logo \
