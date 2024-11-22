@@ -55,19 +55,31 @@ sketchybar --add item apple.logo left \
 sketchybar --add item apple.settings popup.apple.logo \
     --set apple.settings icon=󰅩 \
         label="Settings" \
-        click_script="open -a 'System Preferences'"
+        background.color=0x44000000 \
+        background.drawing=off \
+        click_script="open -a 'System Preferences'" \
+        script="$CONFIG_DIR/plugins/hover_gui.sh" \
+        --subscribe apple.settings mouse.entered mouse.exited
 
 sketchybar -m --set apple.logo popup.drawing=off \
     --add item apple.activity popup.apple.logo \
     --set apple.activity icon=󰡞  \
         label="Activity" \
-        click_script="open -a 'Activity Monitor'"
+        background.color=0x44000000 \
+        background.drawing=off \
+        click_script="open -a 'Activity Monitor'" \
+        script="$CONFIG_DIR/plugins/hover_gui.sh" \
+        --subscribe apple.activity mouse.entered mouse.exited
 
 sketchybar -m --set apple.logo popup.drawing=off \
     --add item apple.lock popup.apple.logo \
     --set apple.lock icon=  \
         label="Lock Screen" \
-        click_script="pmset displaysleepnow"
+        background.color=0x44000000 \
+        background.drawing=off \
+        click_script="pmset displaysleepnow" \
+        script="$CONFIG_DIR/plugins/hover_gui.sh" \
+        --subscribe apple.lock mouse.entered mouse.exited
 
 sketchybar -m --set apple.logo popup.drawing=off
 
@@ -111,21 +123,24 @@ sketchybar --add item chevron left \
 # https://felixkratz.github.io/SketchyBar/config/events
 
 sketchybar --add item clock right \
-               --set clock update_freq=10 icon=  \
-               label.font.size=12 script="$PLUGIN_DIR/clock.sh" \
-           --add item wifi right \
-               --set wifi icon=直 scroll_texts=on label.max_chars=13 \
-               label.font.size=10 script="$PLUGIN_DIR/wifi.sh" \
-               click_script="open /System/Library/PreferencePanes/Network.prefPane" \
-               --subscribe wifi wifi_change \
-           --add item volume right \
-               --set volume script="$PLUGIN_DIR/volume.sh" \
-               click_script="$PLUGIN_DIR/mute_toggle.sh" \
-               --subscribe volume volume_change \
-           --add item battery right \
-               --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-               click_script="open /System/Library/PreferencePanes/Battery.prefPane" \
-               --subscribe battery system_woke power_source_change
+    --set clock update_freq=10 icon=  \
+        label.font.size=12 script="$PLUGIN_DIR/clock.sh" \
+    --add item wifi right \
+        --set wifi icon=直 scroll_texts=on label.max_chars=13 \
+        label.font.size=10 script="$PLUGIN_DIR/wifi.sh" \
+        click_script="open /System/Library/PreferencePanes/Network.prefPane" \
+        --subscribe wifi wifi_change \
+    --add item bluetooth right \
+        --set bluetooth icon=󰂯  label.drawing=off \
+        click_script="open /System/Library/PreferencePanes/Bluetooth.prefPane" \
+    --add item volume right \
+        --set volume script="$PLUGIN_DIR/volume.sh" \
+        click_script="$PLUGIN_DIR/mute_toggle.sh" \
+        --subscribe volume volume_change \
+    --add item battery right \
+        --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+        click_script="open /System/Library/PreferencePanes/Battery.prefPane" \
+        --subscribe battery system_woke power_source_change
 
 ##### StatusLabel #####
 #Mail
