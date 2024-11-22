@@ -122,11 +122,11 @@ sketchybar --add item clock right \
 ##### StatusLabel #####
 #Mail
 sketchybar --add item mail right \
-           --set mail update_freq=10 icon=  label.color=0xffff4a47 script="$PLUGIN_DIR/status_label.sh Mail"
+           --set mail update_freq=10 icon=  label.color=0xffff8349 script="$PLUGIN_DIR/status_label.sh Mail"
 
 #Slack
 sketchybar --add item slack right \
-           --set slack update_freq=10 icon=󰒱  label.color=0xffff4a47 script="$PLUGIN_DIR/status_label.sh Slack"
+           --set slack update_freq=10 icon=󰒱  label.color=0xffff8349 script="$PLUGIN_DIR/status_label.sh Slack"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
