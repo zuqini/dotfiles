@@ -119,5 +119,14 @@ sketchybar --add item clock right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
 
+##### StatusLabel #####
+#Mail
+sketchybar --add item mail right \
+           --set mail update_freq=10 icon=  label.color=0xffff4a47 script="$PLUGIN_DIR/status_label.sh Mail"
+
+#Slack
+sketchybar --add item slack right \
+           --set slack update_freq=10 icon=󰒱  label.color=0xffff4a47 script="$PLUGIN_DIR/status_label.sh Slack"
+
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
