@@ -27,8 +27,8 @@ sketchybar --bar \
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-    icon.font="Hack Nerd Font:Bold:16.0"
-    label.font="Hack Nerd Font:Bold:14.0"
+    icon.font="Iosevka Nerd Font Mono:Bold:18.0"
+    label.font="Iosevka Nerd Font Mono:Bold:14.0"
     icon.color=0xffffffff
     label.color=0xffffffff
     icon.padding_left=12
