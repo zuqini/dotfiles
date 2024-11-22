@@ -55,21 +55,21 @@ sketchybar --add item apple.logo left \
 sketchybar --add item apple.settings popup.apple.logo \
     --set apple.settings icon=󰅩 \
         label="Settings" \
-        click_script="open -a 'System Preferences';
+        click_script="open -a 'System Preferences'"
 
-sketchybar -m --set apple.logo popup.drawing=off" \
+sketchybar -m --set apple.logo popup.drawing=off \
     --add item apple.activity popup.apple.logo \
     --set apple.activity icon=󰡞  \
         label="Activity" \
-        click_script="open -a 'Activity Monitor' ;
+        click_script="open -a 'Activity Monitor'"
 
-sketchybar -m --set apple.logo popup.drawing=off" \
+sketchybar -m --set apple.logo popup.drawing=off \
     --add item apple.lock popup.apple.logo \
     --set apple.lock icon=  \
         label="Lock Screen" \
-        click_script="pmset displaysleepnow ;
+        click_script="pmset displaysleepnow"
 
-sketchybar -m --set apple.logo popup.drawing=off"
+sketchybar -m --set apple.logo popup.drawing=off
 
 ##### Aerospace Integration #####
 sketchybar --add event aerospace_workspace_change
@@ -127,11 +127,15 @@ sketchybar --add item clock right \
 ##### StatusLabel #####
 #Mail
 sketchybar --add item mail right \
-           --set mail update_freq=10 icon=  label.color=0xffff8349 script="$PLUGIN_DIR/status_label.sh Mail"
+           --set mail update_freq=10 icon=  label.color=0xffff8349 \
+           script="$PLUGIN_DIR/status_label.sh Mail" \
+           click_script="open -a mail"
 
 #Slack
 sketchybar --add item slack right \
-           --set slack update_freq=10 icon=󰒱  label.color=0xffff8349 script="$PLUGIN_DIR/status_label.sh Slack"
+           --set slack update_freq=10 icon=󰒱  label.color=0xffff8349 \
+           script="$PLUGIN_DIR/status_label.sh Slack" \
+           click_script="open -a slack"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
