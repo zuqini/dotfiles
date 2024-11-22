@@ -27,16 +27,16 @@ sketchybar --bar \
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-  padding_left=5
-  padding_right=5
+  padding_left=8
+  padding_right=8
   icon.font="Hack Nerd Font:Bold:17.0"
   label.font="Hack Nerd Font:Bold:14.0"
   icon.color=0xffffffff
   label.color=0xffffffff
-  icon.padding_left=4
-  icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=4
+  icon.padding_left=2
+  icon.padding_right=2
+  label.padding_left=2
+  label.padding_right=2
 )
 sketchybar --default "${default[@]}"
 
@@ -111,9 +111,11 @@ sketchybar --add item chevron left \
 # https://felixkratz.github.io/SketchyBar/config/events
 
 sketchybar --add item clock right \
-           --set clock update_freq=10 icon=  label.font.size=12 script="$PLUGIN_DIR/clock.sh" \
+           --set clock update_freq=10 icon=  \
+               label.font.size=12 script="$PLUGIN_DIR/clock.sh" \
            --add item wifi right \
-           --set wifi icon=直 label.font.size=10 script="$PLUGIN_DIR/wifi.sh" \
+           --set wifi icon=直 scroll_texts=on label.max_chars=13 \
+               label.font.size=10 script="$PLUGIN_DIR/wifi.sh" \
            --subscribe wifi wifi_change \
            --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
