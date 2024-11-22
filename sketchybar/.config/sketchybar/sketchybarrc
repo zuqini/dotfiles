@@ -27,16 +27,14 @@ sketchybar --bar \
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-  padding_left=8
-  padding_right=8
   icon.font="Hack Nerd Font:Bold:17.0"
   label.font="Hack Nerd Font:Bold:14.0"
   icon.color=0xffffffff
   label.color=0xffffffff
-  icon.padding_left=2
+  icon.padding_left=12
   icon.padding_right=2
   label.padding_left=2
-  label.padding_right=2
+  label.padding_right=12
 )
 sketchybar --default "${default[@]}"
 
@@ -44,41 +42,52 @@ sketchybar --default "${default[@]}"
 sketchybar --add item apple.logo left \
     --set apple.logo icon=􀣺 \
         icon.font="SF Pro:Black:16.0" \
+        icon.padding_right=12 \
         label.drawing=off \
+        background.color=0x44000000 \
+        background.drawing=off \
         script="$PLUGIN_DIR/apple_logo.sh" \
         popup.y_offset=0 \
         popup.blur_radius=5 \
         popup.background.corner_radius=0 \
         popup.background.color=0xdd1d3337 \
+        popup.background.padding_left=2 \
+        popup.background.padding_right=2 \
     --subscribe apple.logo mouse.entered mouse.exited.global
 
 sketchybar --add item apple.settings popup.apple.logo \
     --set apple.settings icon=󰅩 \
         label="Settings" \
+        icon.padding_right=8 \
         background.color=0x44000000 \
         background.drawing=off \
-        click_script="open -a 'System Preferences'" \
-        script="$PLUGIN_DIR/hover_gui.sh" \
+        width=150 \
+        click_script="open -a 'System Preferences' && sketchybar -m --set apple.logo popup.drawing=off" \
+        script="$PLUGIN_DIR/hover.sh" \
         --subscribe apple.settings mouse.entered mouse.exited
 
 sketchybar -m --set apple.logo popup.drawing=off \
     --add item apple.activity popup.apple.logo \
     --set apple.activity icon=󰡞  \
         label="Activity" \
+        icon.padding_right=8 \
         background.color=0x44000000 \
         background.drawing=off \
-        click_script="open -a 'Activity Monitor'" \
-        script="$PLUGIN_DIR/hover_gui.sh" \
+        width=150 \
+        click_script="open -a 'Activity Monitor' && sketchybar -m --set apple.logo popup.drawing=off" \
+        script="$PLUGIN_DIR/hover.sh" \
         --subscribe apple.activity mouse.entered mouse.exited
 
 sketchybar -m --set apple.logo popup.drawing=off \
     --add item apple.lock popup.apple.logo \
     --set apple.lock icon=  \
         label="Lock Screen" \
+        icon.padding_right=8 \
         background.color=0x44000000 \
         background.drawing=off \
-        click_script="pmset displaysleepnow" \
-        script="$PLUGIN_DIR/hover_gui.sh" \
+        width=150 \
+        click_script="pmset displaysleepnow && sketchybar -m --set apple.logo popup.drawing=off" \
+        script="$PLUGIN_DIR/hover.sh" \
         --subscribe apple.lock mouse.entered mouse.exited
 
 sketchybar -m --set apple.logo popup.drawing=off
@@ -95,6 +104,7 @@ for sid in $(aerospace list-workspaces --all); do
         background.height=20 \
         background.drawing=off \
         label="$sid" \
+        label.padding_left=12 \
         icon.drawing=off \
         click_script="aerospace workspace $sid" \
         script="$PLUGIN_DIR/aerospace.sh $sid"
@@ -106,10 +116,12 @@ done
 # only the properties deviating from the current defaults need to be set
 
 sketchybar --add item chevron left \
-           --set chevron icon= label.drawing=off \
-           --add item front_app left \
-           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-           --subscribe front_app front_app_switched
+    --set chevron icon=  label.drawing=off \
+        icon.padding_right=12 \
+    --add item front_app left \
+        --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+        label.padding_left=12 \
+        --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
@@ -126,34 +138,51 @@ sketchybar --add item clock right \
     --set clock update_freq=10 icon=  \
         label.font.size=12 script="$PLUGIN_DIR/clock.sh" \
     --add item wifi right \
-        --set wifi icon=直 scroll_texts=on label.max_chars=13 \
-        label.font.size=10 script="$PLUGIN_DIR/wifi.sh" \
+        --set wifi icon=直 scroll_texts=on label.max_chars=6 \
+        background.color=0x44000000 \
+        background.drawing=off \
+        label.font.size=10 script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/wifi.sh" \
         click_script="open /System/Library/PreferencePanes/Network.prefPane" \
-        --subscribe wifi wifi_change \
+        --subscribe wifi wifi_change mouse.entered mouse.exited \
     --add item bluetooth right \
         --set bluetooth icon=󰂯  label.drawing=off \
+        icon.padding_right=12 \
+        background.color=0x44000000 \
+        background.drawing=off \
+        script="$PLUGIN_DIR/hover.sh" \
         click_script="open /System/Library/PreferencePanes/Bluetooth.prefPane" \
+        --subscribe bluetooth mouse.entered mouse.exited \
     --add item volume right \
-        --set volume script="$PLUGIN_DIR/volume.sh" \
+        --set volume script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/volume.sh" \
+        background.color=0x44000000 \
+        background.drawing=off \
         click_script="$PLUGIN_DIR/mute_toggle.sh" \
-        --subscribe volume volume_change \
+        --subscribe volume volume_change mouse.entered mouse.exited \
     --add item battery right \
-        --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+        --set battery update_freq=120 script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/battery.sh" \
+        background.color=0x44000000 \
+        background.drawing=off \
         click_script="open /System/Library/PreferencePanes/Battery.prefPane" \
-        --subscribe battery system_woke power_source_change
+        --subscribe battery system_woke power_source_change mouse.entered mouse.exited
 
 ##### StatusLabel #####
 #Mail
 sketchybar --add item mail right \
-           --set mail update_freq=10 icon=  label.color=0xffff8349 \
-           script="$PLUGIN_DIR/status_label.sh Mail" \
-           click_script="open -a mail"
+        --set mail update_freq=10 icon=  label.color=0xffff8349 \
+        background.color=0x44000000 \
+        background.drawing=off \
+        script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/status_label.sh Mail" \
+        click_script="open -a mail" \
+        --subscribe mail mouse.entered mouse.exited
 
 #Slack
 sketchybar --add item slack right \
-           --set slack update_freq=10 icon=󰒱  label.color=0xffff8349 \
-           script="$PLUGIN_DIR/status_label.sh Slack" \
-           click_script="open -a slack"
+        --set slack update_freq=10 icon=󰒱  label.color=0xffff8349 \
+        background.color=0x44000000 \
+        background.drawing=off \
+        script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/status_label.sh Slack" \
+        click_script="open -a slack" \
+        --subscribe slack mouse.entered mouse.exited
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
