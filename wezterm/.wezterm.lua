@@ -21,7 +21,7 @@ config.window_background_opacity = 0.95
 config.color_scheme = 'terafox'
 
 -- config.font = wezterm.font("InputMonoCondensed", { stretch = "Condensed" })
-config.font = wezterm.font("Iosevka Nerd Font Mono")
+config.font = wezterm.font("Iosevka Nerd Font")
 config.font_size = 14
 config.line_height = 1
 config.underline_position = "280%"
