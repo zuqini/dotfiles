@@ -27,7 +27,7 @@ sketchybar --bar \
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-  icon.font="Hack Nerd Font:Bold:17.0"
+  icon.font="Hack Nerd Font:Bold:16.0"
   label.font="Hack Nerd Font:Bold:14.0"
   icon.color=0xffffffff
   label.color=0xffffffff
@@ -41,7 +41,7 @@ sketchybar --default "${default[@]}"
 ##### Menu Items #####
 sketchybar --add item apple.logo left \
     --set apple.logo icon=􀣺 \
-        icon.font="SF Pro:Black:16.0" \
+        padding_right=4 \
         icon.padding_right=12 \
         label.drawing=off \
         background.color=0x44000000 \
@@ -104,7 +104,8 @@ for sid in $(aerospace list-workspaces --all); do
         background.height=20 \
         background.drawing=off \
         label="$sid" \
-        label.padding_left=12 \
+        label.padding_left=8 \
+        label.padding_right=8 \
         icon.drawing=off \
         click_script="aerospace workspace $sid" \
         script="$PLUGIN_DIR/aerospace.sh $sid"
@@ -117,6 +118,7 @@ done
 
 sketchybar --add item chevron left \
     --set chevron icon=  label.drawing=off \
+        padding_left=4 \
         icon.padding_right=12 \
     --add item front_app left \
         --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
