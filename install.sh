@@ -7,6 +7,9 @@ else
   echo "Homebrew already installed"
 fi
 
+# font
+brew install --cask font-iosevka-nerd-font
+
 # wezterm
 which -s wezterm
 if [[ $? != 0 ]] ; then
@@ -38,7 +41,6 @@ if [[ $? != 0 ]] ; then
   echo "Installing sketchybar"
   brew tap FelixKratz/formulae
   brew install sketchybar
-  brew install --cask font-hack-nerd-font
   brew services start sketchybar
 else
   echo "sketchybar already installed"
