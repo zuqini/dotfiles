@@ -1,16 +1,15 @@
 # https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
 alias vim="env TERM=wezterm nvim"
-alias vid="neovide --frame buttonless"
 # For Godot Engine
 # In "Editor Sessings/Text Editor/External", set Exec Flags to --server ./godothost --remote-send "<C-N>:n {file}<CR>{line}G{col}|"
 alias vimgd="vim --listen ./godothost"
+alias k="kubectl"
 
 source ~/dotfiles/.custom_commands.sh
 
 # completion
 fpath+=~/.zfunc
 
-# alias vid="neovide --frame buttonless --muitigrid" for smooth scroll
 # Custom PATHs ====================================================================
 export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 export PATH=/usr/local/opt/llvm/bin:$PATH
@@ -24,6 +23,7 @@ export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current
 # export FrameworkPathOverride=~/.config/coc/extensions/coc-omnisharp-data/server/omnisharp
 # =================================================================================
+eval "$(brew shellenv)"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
