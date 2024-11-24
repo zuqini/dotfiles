@@ -49,10 +49,10 @@ fi
 cd ~/dotfiles
 
 stow zshrc
+stow omz-themes
 
 # macos tiling windows manager and bar
-stow aerospace
-stow sketchybar
+stow aerospace sketchybar
 
 # editors
 stow nvim idea doom ctags
