@@ -1,6 +1,7 @@
 # Lambda IMproved
+# Improved color contrast + time + virtenv prompt info support on top of the original lambda theme
 
-# Lifted from ys.zsh-theme
+# virtenv prompt info modified from ys.zsh-theme
 VIRTUAL_ENV_DISABLE_PROMPT=1
 YS_THEME_VIRTUALENV_PROMPT_PREFIX="%{$fg_bold[magenta]%}("
 YS_THEME_VIRTUALENV_PROMPT_SUFFIX=")%{$reset_color%} "
