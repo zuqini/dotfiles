@@ -48,6 +48,8 @@ fi
 
 cd ~/dotfiles
 
+stow zshrc
+
 # macos tiling windows manager and bar
 stow aerospace
 stow sketchybar
