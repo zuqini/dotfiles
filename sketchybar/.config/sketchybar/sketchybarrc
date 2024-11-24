@@ -103,9 +103,8 @@ sketchybar --add item chevron left \
         click_script="$PLUGIN_DIR/mute_toggle.sh" \
         --subscribe volume volume_change mouse.entered mouse.exited \
     --add item battery right \
-        --set battery update_freq=120 script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/battery.sh" \
-        click_script="open /System/Library/PreferencePanes/Battery.prefPane" \
-        --subscribe battery system_woke power_source_change mouse.entered mouse.exited \
+        --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+        --subscribe battery system_woke power_source_change \
     --add item mail right \
         --set mail update_freq=10 icon=  label.color=0xffff8349 \
         script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/status_label.sh Mail" \
