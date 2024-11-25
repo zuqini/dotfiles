@@ -2,3 +2,6 @@
 	path = nvim/.config/nvim
 	url = https://github.com/zuqini/nvim.git
 	branch = main
+[submodule "misc/themes/oh-my-zsh/lambdim-zsh-theme"]
+	path = misc/themes/oh-my-zsh/lambdim-zsh-theme
+	url = https://github.com/zuqini/lambdim-zsh-theme.git
