@@ -4,9 +4,10 @@ alias vim="env TERM=wezterm nvim"
 # In "Editor Sessings/Text Editor/External", set Exec Flags to --server ./godothost --remote-send "<C-N>:n {file}<CR>{line}G{col}|"
 alias vimgd="vim --listen ./godothost"
 alias k="kubectl"
-alias ht="history -t '%d/%m/%y %T'"
+alias ht="history -t '%y-%m-%d %T'"
 
 source ~/dotfiles/.custom_commands.sh
+source ~/work.sh
 
 # completion
 fpath+=~/.zfunc
