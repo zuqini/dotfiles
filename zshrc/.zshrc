@@ -1,32 +1,3 @@
-# https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
-alias vim="env TERM=wezterm nvim"
-# For Godot Engine
-# In "Editor Sessings/Text Editor/External", set Exec Flags to --server ./godothost --remote-send "<C-N>:n {file}<CR>{line}G{col}|"
-alias vimgd="vim --listen ./godothost"
-alias k="kubectl"
-alias ht="history -t '%y-%m-%d %T'"
-
-source ~/dotfiles/.custom_commands.sh
-source ~/work.sh
-
-# completion
-fpath+=~/.zfunc
-
-# Custom PATHs ====================================================================
-export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
-export PATH=/usr/local/opt/llvm/bin:$PATH
-export PATH=$PATH:$HOME/.config/emacs/bin
-export PATH=$PATH:$HOME/Development/flutter/bin
-export PATH=$PATH:$HOME/.dotnet/tools
-export PATH=$PATH:/Applications/love.app/Contents/MacOS/
-# NVIM Language Servers on the path for Helix
-export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
-# Framework override for C# LSP
-export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current
-# export FrameworkPathOverride=~/.config/coc/extensions/coc-omnisharp-data/server/omnisharp
-# =================================================================================
-eval "$(brew shellenv)"
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -143,3 +114,37 @@ function zvm_after_init() {
   bindkey '^[[Z' forward-word
   bindkey '^H' backward-kill-word
 }
+
+# ---------------------------------------------------------------------------------------------
+# My configs
+
+# https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
+alias vim="env TERM=wezterm nvim"
+# For Godot Engine
+# In "Editor Sessings/Text Editor/External", set Exec Flags to --server ./godothost --remote-send "<C-N>:n {file}<CR>{line}G{col}|"
+alias vimgd="vim --listen ./godothost"
+alias k="kubectl"
+alias ht="history -t '%y-%m-%d %T'"
+
+unsetopt autocd
+
+source ~/dotfiles/.custom_commands.sh
+source ~/work.sh
+
+# completion
+fpath+=~/.zfunc
+
+# Custom PATHs ====================================================================
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
+export PATH=/usr/local/opt/llvm/bin:$PATH
+export PATH=$PATH:$HOME/.config/emacs/bin
+export PATH=$PATH:$HOME/Development/flutter/bin
+export PATH=$PATH:$HOME/.dotnet/tools
+export PATH=$PATH:/Applications/love.app/Contents/MacOS/
+# NVIM Language Servers on the path for Helix
+export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
+# Framework override for C# LSP
+export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current
+# export FrameworkPathOverride=~/.config/coc/extensions/coc-omnisharp-data/server/omnisharp
+# =================================================================================
+eval "$(brew shellenv)"
