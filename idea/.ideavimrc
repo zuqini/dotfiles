@@ -2,6 +2,7 @@ let mapleader = " "
 set easymotion
 
 nmap <leader>s <Plug>(easymotion-s2)
+nmap gri :action GotoImplementation<CR>
 
 set mouse=a
 set hidden
