@@ -1,7 +1,7 @@
 let mapleader = " "
 set easymotion
 
-nmap s <Plug>(easymotion-s2)
+nmap <leader>s <Plug>(easymotion-s2)
 
 set mouse=a
 set hidden
@@ -13,7 +13,7 @@ set incsearch
 set hlsearch
 set ignorecase smartcase
 set nofixendofline
-set scrolloff=8
+set scrolloff=4
 set cursorline
 
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
@@ -47,24 +47,14 @@ nnoremap <leader>y "+y
 nnoremap <leader>Y "+y$
 vnoremap <leader>y "+y
 vnoremap <leader>Y "+Y
-nnoremap <leader>c "+y
-nnoremap <leader>C "+y$
-vnoremap <leader>c "+y
-vnoremap <leader>C "+Y
-nnoremap <leader>x "+d
-nnoremap <leader>X "+D
-vnoremap <leader>x "+d
-vnoremap <leader>X "+D
+nnoremap <leader>d "+d
+nnoremap <leader>D "+D
+vnoremap <leader>d "+d
+vnoremap <leader>D "+D
 nnoremap <leader>v "+p
 nnoremap <leader>V "+P
 vnoremap <leader>v "_d"+P
 vnoremap <leader>V "+P
-
-" Delete into oblivion
-nnoremap <leader>d "_d
-nnoremap <leader>D "_D
-vnoremap <leader>d "_d
-vnoremap <leader>D "_D
 
 xnoremap p "_dP
 
@@ -73,10 +63,6 @@ nnoremap <leader>p "0p
 nnoremap <leader>P "0P
 vnoremap <leader>p "0p
 vnoremap <leader>P "0P
-
-" centering
-" set scrolloff=999
-nnoremap <leader>z :let &scrolloff=999-&scrolloff<CR>
 
 " Folding
 set foldenable
