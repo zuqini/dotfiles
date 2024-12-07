@@ -1,1 +1,0 @@
-/Users/zachli/dotfiles/misc/themes/oh-my-zsh/lambdim-zsh-theme/lambdim.zsh-theme
