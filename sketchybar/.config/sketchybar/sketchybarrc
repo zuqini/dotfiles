@@ -43,7 +43,7 @@ sketchybar --default "${default[@]}"
 
 ##### Menu Items #####
 sketchybar --add item apple.logo left \
-    --set apple.logo icon=􀣺 \
+    --set apple.logo icon= \
         padding_right=4 \
         icon.padding_right=12 \
         label.drawing=off \
@@ -95,7 +95,7 @@ sketchybar --add item chevron left \
         click_script="$PLUGIN_DIR/mute_toggle.sh" \
         --subscribe volume volume_change mouse.entered mouse.exited \
     --add item wifi right \
-        --set wifi icon=直 scroll_texts=on label.max_chars=6 \
+        --set wifi icon=󰖩 scroll_texts=on label.max_chars=6 \
         label.font.size=12 script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/wifi.sh" \
         click_script="open /System/Library/PreferencePanes/Network.prefPane" \
         --subscribe wifi wifi_change mouse.entered mouse.exited \
