@@ -41,7 +41,6 @@ if [[ $? != 0 ]] ; then
   echo "Installing sketchybar"
   brew tap FelixKratz/formulae
   brew install sketchybar
-  brew services start sketchybar
 else
   echo "sketchybar already installed"
 fi
