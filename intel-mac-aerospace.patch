@@ -1,0 +1,21 @@
+diff --git a/aerospace/.config/aerospace/aerospace.toml b/aerospace/.config/aerospace/aerospace.toml
+index aecaae0..54c013b 100644
+--- a/aerospace/.config/aerospace/aerospace.toml
++++ b/aerospace/.config/aerospace/aerospace.toml
+@@ -63,7 +63,7 @@ outer.bottom =     8
+ # see https://github.com/nikitabobko/AeroSpace/issues/492
+ # notch height is 32, sketchybar is 32 + 4 offset, 8 gap is 4+8=12
+ # sketchybar is 32 + 4 offset, 8 gap withought notch is 32+4+8=44
+-outer.top =        [{ monitor."^built-in retina display$" = 12 }, 44]
++outer.top =        44
+ outer.right =      8
+ 
+ # 'main' binding mode declaration
+@@ -223,3 +223,7 @@ alt-shift-left = ['join-with left', 'exec-and-forget sketchybar --remove service
+ alt-shift-down = ['join-with down', 'exec-and-forget sketchybar --remove service', 'mode main']
+ alt-shift-up = ['join-with up', 'exec-and-forget sketchybar --remove service', 'mode main']
+ alt-shift-right = ['join-with right', 'exec-and-forget sketchybar --remove service', 'mode main']
++
++# Intel mac PATH bug, See https://github.com/nikitabobko/AeroSpace/issues/556#issuecomment-2392419701
++[exec.env-vars]
++PATH = '/usr/local/bin:${PATH}'
