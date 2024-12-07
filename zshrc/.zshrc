@@ -121,6 +121,8 @@ function zvm_after_init() {
 # https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
 alias vim="env TERM=wezterm nvim"
 alias ovim="\vim"
+alias skbr="sketchybar --reload"
+
 # For Godot Engine
 # In "Editor Sessings/Text Editor/External", set Exec Flags to --server ./godothost --remote-send "<C-N>:n {file}<CR>{line}G{col}|"
 alias vimgd="vim --listen ./godothost"
