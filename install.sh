@@ -45,12 +45,12 @@ else
   echo "sketchybar already installed"
 fi
 
-cd ~/dotfiles
+DOTFILES_PATH=$(pwd)
 
 stow zshrc
 
 mkdir -p omz-themes/.oh-my-zsh/custom/themes
-ln -s ~/dotfiles/misc/themes/oh-my-zsh/lambdim-zsh-theme/lambdim.zsh-theme ~/dotfiles/omz-themes/.oh-my-zsh/custom/themes/
+ln -s ${DOTFILES_PATH}/misc/themes/oh-my-zsh/lambdim-zsh-theme/lambdim.zsh-theme ${DOTFILES_PATH}/omz-themes/.oh-my-zsh/custom/themes/
 stow omz-themes
 
 # macos tiling windows manager and bar
