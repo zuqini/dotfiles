@@ -45,7 +45,8 @@ else
   echo "sketchybar already installed"
 fi
 
-DOTFILES_PATH=$(pwd)
+# https://stackoverflow.com/a/246128
+DOTFILES_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 stow zshrc
 
