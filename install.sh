@@ -49,7 +49,8 @@ cd ~/dotfiles
 
 stow zshrc
 
-cp misc/themes/oh-my-zsh/lambdim-zsh-theme/lambdim.zsh-theme omz-themes/.oh-my-zsh/custom/themes/
+mkdir -p omz-themes/.oh-my-zsh/custom/themes
+ln -s ~/dotfiles/misc/themes/oh-my-zsh/lambdim-zsh-theme/lambdim.zsh-theme ~/dotfiles/omz-themes/.oh-my-zsh/custom/themes/
 stow omz-themes
 
 # macos tiling windows manager and bar
