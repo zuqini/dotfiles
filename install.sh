@@ -7,6 +7,9 @@ else
   echo "Homebrew already installed"
 fi
 
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # font
 brew install --cask font-iosevka-nerd-font
 
@@ -45,14 +48,13 @@ else
   echo "sketchybar already installed"
 fi
 
-# https://stackoverflow.com/a/246128
+# https://stackoverflow.com/a/246129
 DOTFILES_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 stow zshrc
 
-mkdir -p omz-themes/.oh-my-zsh/custom/themes
-ln -s ${DOTFILES_PATH}/misc/themes/oh-my-zsh/lambdim-zsh-theme/lambdim.zsh-theme ${DOTFILES_PATH}/omz-themes/.oh-my-zsh/custom/themes/
-stow omz-themes
+mkdir -p ~/.oh-my-zsh/custom/themes
+ln -s ${DOTFILES_PATH}/misc/themes/oh-my-zsh/lambdim-zsh-theme/lambdim.zsh-theme ~/.oh-my-zsh/custom/themes/lambdim.zsh-theme
 
 # macos tiling windows manager and bar
 stow aerospace sketchybar
