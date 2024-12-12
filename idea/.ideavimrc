@@ -3,6 +3,11 @@ set easymotion
 
 nmap <leader>s <Plug>(easymotion-s2)
 nmap gri :action GotoImplementation<CR>
+nmap grn :action RenameElement<CR>
+nmap grr :action GotoDeclaration<CR>
+
+nmap <leader>ff :action GotoFile<CR>
+nmap <leader>fn :action FindInPath<CR>
 
 set mouse=a
 set hidden
