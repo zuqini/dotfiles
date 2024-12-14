@@ -120,8 +120,8 @@ function zvm_after_init() {
 
 # https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
 alias vim="env TERM=wezterm nvim"
-alias cvim="nvim -u ~/.config/nvim/pluginless.vim"
-alias ovim="\vim"
+alias vimnp="nvim -u ~/.config/nvim/noplugin.vim" # vim noplugin
+alias viml="\vim" # vim legacy
 alias skbr="sketchybar --reload"
 
 # For Godot Engine
