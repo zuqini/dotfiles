@@ -133,7 +133,7 @@ alias ht="history -t '%y-%m-%d %T'"
 unsetopt autocd
 
 source ~/dotfiles/.custom_commands.sh
-[[ -f "~/work.sh" ]] && source ~/work.sh
+[[ -f "$HOME/work.sh" ]] && source ~/work.sh
 
 # completion
 fpath+=~/.zfunc
