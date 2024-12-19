@@ -26,6 +26,7 @@ config.font_size = 14
 config.line_height = 1
 config.underline_position = "280%"
 config.underline_thickness = "220%"
+config.max_fps = 144
 
 config.keys = {
   { key = 'm', mods = 'ALT', action = wezterm.action.ShowLauncher },
