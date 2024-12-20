@@ -61,7 +61,7 @@ for sid in $(aerospace list-workspaces --all); do
         label="$sid" \
         label.padding_left=8 \
         label.padding_right=8 \
-        label.color=0xffaaaaaa \
+        label.color=0xff587b7b \
         icon.drawing=off \
         click_script="aerospace workspace $sid" \
         script="$PLUGIN_DIR/aerospace.sh $sid"
@@ -75,7 +75,7 @@ sketchybar --add item front_app left \
         --add item service left \
         --set service icon=  \
         background.drawing=off \
-        icon.color=0xff8effaf \
+        icon.color=0xffaaeeec \
         drawing=off \
     --add item clock right \
         --set clock update_freq=30 icon=  \
@@ -110,13 +110,13 @@ sketchybar --add item front_app left \
         click_script="open /System/Library/PreferencePanes/Network.prefPane" \
         --subscribe wifi wifi_change mouse.entered mouse.exited \
     --add item mail right \
-        --set mail update_freq=10 icon=  label.color=0xffff8349 \
+        --set mail update_freq=10 icon=  label.color=0xfffda47f \
         background.corner_radius=11 \
         script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/status_label.sh Mail" \
         click_script="open -a mail" \
         --subscribe mail mouse.entered mouse.exited \
     --add item slack right \
-        --set slack update_freq=10 icon=󰒱  label.color=0xffff8349 \
+        --set slack update_freq=10 icon=󰒱  label.color=0xfffda47f \
         background.corner_radius=11 \
         script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/status_label.sh Slack" \
         click_script="open -a slack" \
@@ -136,17 +136,17 @@ sketchybar \
         background.border_color=0xff1d3337 \
         background.border_width=1 \
     --add bracket spaces space.1 space.2 space.3 space.4 space.5 space.6 space.7 space.8 space.9 space.10 \
-        --set spaces background.color=0xff254147 \
+        --set spaces background.color=0xff264048 \
         background.corner_radius=8 \
         background.height=20 \
         background.border_color=0x992d4f56 \
         background.border_width=1 \
     --add bracket right_static_info clock battery \
-        --set right_static_info background.color=0xaa7aa4a1 \
-        background.corner_radius=10 \
-        background.height=31 \
-        background.border_color=0xdd152528 \
-        background.border_width=2 \
+        --set right_static_info background.color=0xff5a93aa \
+        background.corner_radius=11 \
+        background.height=32 \
+        background.border_color=0xff1d3337 \
+        background.border_width=1
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
