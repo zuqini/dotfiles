@@ -15,11 +15,9 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 sketchybar --bar \
     position=top \
     height=32 \
-    blur_radius=5 \
-    color=0xee254147 \
-    margin=8 \
-    y_offset=4 \
-    corner_radius=16
+    color=0x00000000 \
+    margin=-10 \
+    y_offset=4
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -29,8 +27,8 @@ sketchybar --bar \
 default=(
     icon.font="Iosevka Nerd Font:Bold:18.0"
     label.font="Iosevka Nerd Font:Bold:14.0"
-    icon.color=0xffffffff
-    label.color=0xffffffff
+    icon.color=0xffcbd9d8
+    label.color=0xffe6eaea
     icon.padding_left=12
     icon.padding_right=2
     label.padding_left=2
@@ -45,16 +43,12 @@ sketchybar --default "${default[@]}"
 sketchybar --add item apple.logo left \
     --set apple.logo icon= \
         padding_right=4 \
-        icon.padding_right=12 \
+        icon.padding_right=18 \
+        icon.padding_left=18 \
         label.drawing=off \
         script="$PLUGIN_DIR/hover.sh" \
         click_script="open -a 'System Preferences'" \
-        popup.y_offset=0 \
-        popup.blur_radius=5 \
-        popup.background.corner_radius=0 \
-        popup.background.color=0xdd1d3337 \
-        popup.background.padding_left=2 \
-        popup.background.padding_right=2 \
+        background.corner_radius=11 \
     --subscribe apple.logo mouse.entered mouse.exited
 
 ##### Aerospace Integration #####
@@ -64,57 +58,90 @@ for sid in $(aerospace list-workspaces --all); do
     sketchybar --add item space.$sid left \
         --subscribe space.$sid aerospace_workspace_change \
         --set space.$sid \
-        background.color=0x44ffffff \
-        background.corner_radius=5 \
-        background.height=20 \
-        background.drawing=off \
         label="$sid" \
         label.padding_left=8 \
         label.padding_right=8 \
+        label.color=0xffaaaaaa \
         icon.drawing=off \
         click_script="aerospace workspace $sid" \
         script="$PLUGIN_DIR/aerospace.sh $sid"
 done
 
-sketchybar --add item chevron left \
-    --set chevron icon=  label.drawing=off \
-        padding_left=4 \
-        icon.padding_right=12 \
-    --add item front_app left \
+sketchybar --add item front_app left \
         --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-        label.padding_left=12 \
+        label.padding_left=18 \
+        label.padding_right=18 \
         --subscribe front_app front_app_switched \
     --add item clock right \
         --set clock update_freq=30 icon=  \
-        label.font.size=12 script="$PLUGIN_DIR/clock.sh" \
+        script="$PLUGIN_DIR/clock.sh" \
+        icon.drawing=off \
+        label.font.size=12 \
+        label.color=0xff0f1c1e \
+        icon.color=0xff0f1c1e \
     --add item battery right \
         --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+        label.font.size=12 \
+        label.color=0xff0f1c1e \
+        icon.color=0xff0f1c1e \
         --subscribe battery system_woke power_source_change \
-    --add item volume right \
-        --set volume script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/volume.sh" \
-        click_script="$PLUGIN_DIR/mute_toggle.sh" \
-        --subscribe volume volume_change mouse.entered mouse.exited \
-    --add item wifi right \
-        --set wifi icon=󰖩 scroll_texts=on label.max_chars=6 \
-        label.font.size=12 script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/wifi.sh" \
-        click_script="open /System/Library/PreferencePanes/Network.prefPane" \
-        --subscribe wifi wifi_change mouse.entered mouse.exited \
     --add item bluetooth right \
         --set bluetooth icon=󰂯  label.drawing=off \
+        background.corner_radius=11 \
         icon.padding_right=12 \
         script="$PLUGIN_DIR/hover.sh" \
         click_script="open /System/Library/PreferencePanes/Bluetooth.prefPane" \
         --subscribe bluetooth mouse.entered mouse.exited \
+    --add item volume right \
+        --set volume script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/volume.sh" \
+        background.corner_radius=11 \
+        label.font.size=12 \
+        click_script="$PLUGIN_DIR/mute_toggle.sh" \
+        --subscribe volume volume_change mouse.entered mouse.exited \
+    --add item wifi right \
+        --set wifi icon=󰖩 scroll_texts=on label.max_chars=6 \
+        background.corner_radius=11 \
+        label.font.size=12 script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/wifi.sh" \
+        click_script="open /System/Library/PreferencePanes/Network.prefPane" \
+        --subscribe wifi wifi_change mouse.entered mouse.exited \
     --add item mail right \
         --set mail update_freq=10 icon=  label.color=0xffff8349 \
+        background.corner_radius=11 \
         script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/status_label.sh Mail" \
         click_script="open -a mail" \
         --subscribe mail mouse.entered mouse.exited \
     --add item slack right \
         --set slack update_freq=10 icon=󰒱  label.color=0xffff8349 \
+        background.corner_radius=11 \
         script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/status_label.sh Slack" \
         click_script="open -a slack" \
         --subscribe slack mouse.entered mouse.exited
+
+sketchybar \
+    --add bracket left_items apple.logo space.1 space.2 space.3 space.4 space.5 space.6 space.7 space.8 space.9 space.10 front_app \
+        --set left_items background.color=0xdd152528 \
+        background.corner_radius=11 \
+        blur_radius=5 \
+        background.border_color=0xff1d3337 \
+        background.border_width=1 \
+    --add bracket right_items clock battery volume wifi bluetooth mail slack \
+        --set right_items background.color=0xdd152528 \
+        background.corner_radius=11 \
+        blur_radius=5 \
+        background.border_color=0xff1d3337 \
+        background.border_width=1 \
+    --add bracket spaces space.1 space.2 space.3 space.4 space.5 space.6 space.7 space.8 space.9 space.10 \
+        --set spaces background.color=0xff254147 \
+        background.corner_radius=8 \
+        background.height=20 \
+        background.border_color=0x992d4f56 \
+        background.border_width=1 \
+    --add bracket right_static_info clock battery \
+        --set right_static_info background.color=0xaa7aa4a1 \
+        background.corner_radius=10 \
+        background.height=31 \
+        background.border_color=0xdd152528 \
+        background.border_width=2 \
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
