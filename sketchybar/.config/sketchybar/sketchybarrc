@@ -152,7 +152,7 @@ sketchybar \
         background.corner_radius=9 \
         background.height=32 \
         background.border_color=0xff1d3337 \
-        background.border_width=1
+        background.border_width=3
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
