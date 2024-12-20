@@ -72,6 +72,11 @@ sketchybar --add item front_app left \
         label.padding_left=18 \
         label.padding_right=18 \
         --subscribe front_app front_app_switched \
+        --add item service left \
+        --set service icon=  \
+        background.drawing=off \
+        icon.color=0xff8effaf \
+        drawing=off \
     --add item clock right \
         --set clock update_freq=30 icon=  \
         script="$PLUGIN_DIR/clock.sh" \
@@ -118,7 +123,7 @@ sketchybar --add item front_app left \
         --subscribe slack mouse.entered mouse.exited
 
 sketchybar \
-    --add bracket left_items apple.logo space.1 space.2 space.3 space.4 space.5 space.6 space.7 space.8 space.9 space.10 front_app \
+    --add bracket left_items apple.logo space.1 space.2 space.3 space.4 space.5 space.6 space.7 space.8 space.9 space.10 front_app service \
         --set left_items background.color=0xdd152528 \
         background.corner_radius=11 \
         blur_radius=5 \
