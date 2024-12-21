@@ -83,7 +83,7 @@ sketchybar --add item front_app left \
         background.color=0xcc152528 \
         background.corner_radius=9 \
         blur_radius=5 \
-        background.border_color=0xff1d3337 \
+        background.border_color=0xcc254147 \
         background.border_width=1 \
         drawing=off \
     --add item clock right \
