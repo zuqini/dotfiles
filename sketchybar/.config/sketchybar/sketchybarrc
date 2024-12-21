@@ -25,8 +25,8 @@ sketchybar --bar \
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-    icon.font="Iosevka Nerd Font:Bold:18.0"
-    label.font="Iosevka Nerd Font:Bold:14.0"
+    icon.font="Iosevka Nerd Font:Regular:18.0"
+    label.font="Iosevka Nerd Font:Regular:13.0"
     icon.color=0xffcbd9d8
     label.color=0xffe6eaea
     icon.padding_left=12
@@ -84,28 +84,34 @@ sketchybar --add item front_app left \
         icon.color=0xffaaeeec \
         drawing=off \
     --add item clock right \
-        --set clock update_freq=30 icon=  \
+        --set clock update_freq=30 \
         script="$PLUGIN_DIR/clock.sh" \
         icon.drawing=off \
-        label.font.size=12 \
+        label.font.style=SemiBold \
+        label.padding_left=6 \
         label.color=0xff0f1c1e \
-        icon.color=0xff0f1c1e \
+    --add item calendar right \
+        --set calendar update_freq=30 \
+        script="$PLUGIN_DIR/calendar.sh" \
+        icon.drawing=off \
+        label.padding_right=6 \
+        label.font.style=Heavy \
+        label.color=0xff0f1c1e \
     --add item battery right \
         --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-        label.font.size=12 \
+        label.font.style=SemiBold \
         label.color=0xff0f1c1e \
         icon.color=0xff0f1c1e \
         --subscribe battery system_woke power_source_change \
     --add item wifi right \
         --set wifi icon=󰖩 scroll_texts=on label.max_chars=6 \
         background.corner_radius=9 \
-        label.font.size=12 script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/wifi.sh" \
+        script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/wifi.sh" \
         click_script="open /System/Library/PreferencePanes/Network.prefPane" \
         --subscribe wifi wifi_change mouse.entered mouse.exited \
     --add item volume right \
         --set volume script="$PLUGIN_DIR/hover.sh && $PLUGIN_DIR/volume.sh" \
         background.corner_radius=9 \
-        label.font.size=12 \
         click_script="$PLUGIN_DIR/mute_toggle.sh" \
         --subscribe volume volume_change mouse.entered mouse.exited \
     --add item bluetooth right \
@@ -135,7 +141,7 @@ sketchybar \
         blur_radius=5 \
         background.border_color=0xff1d3337 \
         background.border_width=1 \
-    --add bracket right_items clock battery volume wifi bluetooth mail slack \
+    --add bracket right_items calendar clock battery volume wifi bluetooth mail slack \
         --set right_items background.color=0xcc152528 \
         background.corner_radius=9 \
         blur_radius=5 \
@@ -147,7 +153,7 @@ sketchybar \
         background.height=22 \
         background.border_color=0x882d4f56 \
         background.border_width=1 \
-    --add bracket right_static_info clock battery \
+    --add bracket right_static_info calendar clock battery \
         --set right_static_info background.color=0xff5a93aa \
         background.corner_radius=9 \
         background.height=32 \
