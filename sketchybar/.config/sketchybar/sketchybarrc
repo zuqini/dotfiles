@@ -85,7 +85,6 @@ sketchybar --add item front_app left \
         blur_radius=5 \
         background.border_color=0xff1d3337 \
         background.border_width=1 \
-        icon.color=0xffaaeeec \
         drawing=off \
     --add item clock right \
         --set clock update_freq=30 \
@@ -145,19 +144,19 @@ sketchybar \
         --set left_items background.color=0xcc152528 \
         background.corner_radius=9 \
         blur_radius=5 \
-        background.border_color=0xff1d3337 \
+        background.border_color=0xcc254147 \
         background.border_width=1 \
     --add bracket right_items calendar clock battery volume wifi bluetooth mail slack \
         --set right_items background.color=0xcc152528 \
         background.corner_radius=9 \
         blur_radius=5 \
-        background.border_color=0xff1d3337 \
+        background.border_color=0xcc254147 \
         background.border_width=1 \
     --add bracket spaces space.1 space.2 space.3 space.4 space.5 space.6 space.7 space.8 space.9 space.10 \
         --set spaces background.color=0x88264048 \
         background.corner_radius=8 \
         background.height=22 \
-        background.border_color=0x882d4f56 \
+        background.border_color=0x442d4f56 \
         background.border_width=1 \
     --add bracket right_static_info calendar clock battery \
         --set right_static_info background.color=0xff5a93aa \
