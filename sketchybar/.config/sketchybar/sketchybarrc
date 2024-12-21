@@ -29,10 +29,10 @@ default=(
     label.font="Iosevka Nerd Font:Regular:13.0"
     icon.color=0xffcbd9d8
     label.color=0xffe6eaea
-    icon.padding_left=12
-    icon.padding_right=2
-    label.padding_left=2
-    label.padding_right=12
+    icon.padding_left=18
+    icon.padding_right=4
+    label.padding_left=4
+    label.padding_right=18
     background.height=32
     background.color=0x44000000
     background.drawing=off
@@ -59,28 +59,32 @@ for sid in $(aerospace list-workspaces --all); do
         --subscribe space.$sid aerospace_workspace_change \
         --set space.$sid \
         label="$sid" \
-        label.padding_left=8 \
-        label.padding_right=8 \
+        label.padding_left=9 \
+        label.padding_right=9 \
         label.color=0xff587b7b \
         icon.drawing=off \
         click_script="aerospace workspace $sid" \
         script="$PLUGIN_DIR/aerospace.sh $sid"
 done
 
-sketchybar --set space.1 label.padding_left=16 \
-    --set space.10 label.padding_right=16
+sketchybar --set space.1 label.padding_left=18 \
+    --set space.10 label.padding_right=18
 
 sketchybar --add item front_app left \
         --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
         label.padding_left=18 \
         label.padding_right=18 \
         --subscribe front_app front_app_switched \
-        --add item service left \
+    --add item service q \
         --set service icon=  \
-        icon.padding_left=0 \
+        icon.padding_left=18 \
         icon.padding_right=18 \
         label.drawing=off \
-        background.drawing=off \
+        background.color=0xcc152528 \
+        background.corner_radius=9 \
+        blur_radius=5 \
+        background.border_color=0xff1d3337 \
+        background.border_width=1 \
         icon.color=0xffaaeeec \
         drawing=off \
     --add item clock right \
@@ -88,18 +92,20 @@ sketchybar --add item front_app left \
         script="$PLUGIN_DIR/clock.sh" \
         icon.drawing=off \
         label.font.style=SemiBold \
-        label.padding_left=6 \
+        label.padding_left=4 \
         label.color=0xff0f1c1e \
     --add item calendar right \
         --set calendar update_freq=30 \
         script="$PLUGIN_DIR/calendar.sh" \
         icon.drawing=off \
-        label.padding_right=6 \
+        label.padding_right=4 \
+        label.padding_left=9 \
         label.font.style=Heavy \
         label.color=0xff0f1c1e \
     --add item battery right \
         --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
         label.font.style=SemiBold \
+        label.padding_right=9 \
         label.color=0xff0f1c1e \
         icon.color=0xff0f1c1e \
         --subscribe battery system_woke power_source_change \
@@ -117,7 +123,7 @@ sketchybar --add item front_app left \
     --add item bluetooth right \
         --set bluetooth icon=󰂯  label.drawing=off \
         background.corner_radius=9 \
-        icon.padding_right=12 \
+        icon.padding_right=18 \
         script="$PLUGIN_DIR/hover.sh" \
         click_script="open /System/Library/PreferencePanes/Bluetooth.prefPane" \
         --subscribe bluetooth mouse.entered mouse.exited \
@@ -135,7 +141,7 @@ sketchybar --add item front_app left \
         --subscribe slack mouse.entered mouse.exited
 
 sketchybar \
-    --add bracket left_items apple.logo space.1 space.2 space.3 space.4 space.5 space.6 space.7 space.8 space.9 space.10 front_app service \
+    --add bracket left_items apple.logo space.1 space.2 space.3 space.4 space.5 space.6 space.7 space.8 space.9 space.10 front_app \
         --set left_items background.color=0xcc152528 \
         background.corner_radius=9 \
         blur_radius=5 \
