@@ -1,17 +1,17 @@
 diff --git a/aerospace/.config/aerospace/aerospace.toml b/aerospace/.config/aerospace/aerospace.toml
-index 6c31f06..65b6500 100644
+index bf406d3..21ea06e 100644
 --- a/aerospace/.config/aerospace/aerospace.toml
 +++ b/aerospace/.config/aerospace/aerospace.toml
-@@ -64,7 +64,7 @@ outer.bottom =     8
- # notch height is 32, sketchybar is 32 + 4 offset, 8 gap is 4+8=12
- # sketchybar is 32 + 4 offset, 4 gap (4 looks better for notchless)
- # withought notch is 32+4+4=40
--outer.top =        [{ monitor."^built-in retina display$" = 12 }, 40]
+@@ -63,7 +63,7 @@ outer.bottom =     8
+ # see https://github.com/nikitabobko/AeroSpace/issues/492
+ # notch height is 32, sketchybar is 32 + 4 offset, 4 gap is 4+4=8
+ # sketchybar is 32 + 4 offset, 4 gap withought notch is 32+4+4=40
+-outer.top =        [{ monitor."^built-in retina display$" = 8 }, 40]
 +outer.top =        40
  outer.right =      8
  
  # 'main' binding mode declaration
-@@ -224,3 +224,7 @@ alt-shift-left = ['join-with left', 'exec-and-forget sketchybar --set service dr
+@@ -223,3 +223,7 @@ alt-shift-left = ['join-with left', 'exec-and-forget sketchybar --set service dr
  alt-shift-down = ['join-with down', 'exec-and-forget sketchybar --set service drawing=off', 'mode main']
  alt-shift-up = ['join-with up', 'exec-and-forget sketchybar --set service drawing=off', 'mode main']
  alt-shift-right = ['join-with right', 'exec-and-forget sketchybar --set service drawing=off', 'mode main']
