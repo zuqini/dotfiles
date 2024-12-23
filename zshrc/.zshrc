@@ -152,5 +152,5 @@ eval "$(brew shellenv)"
 function zvm_after_init() {
     # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
     source <(fzf --zsh)
-    bindkey '^ ' forward-word
+    bindkey '^ ' autosuggest-accept
 }
