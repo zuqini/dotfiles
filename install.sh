@@ -71,7 +71,7 @@ stow tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # terminal configs
-stow wezterm kitty
+stow wezterm
 
 # global git configs
 stow git
