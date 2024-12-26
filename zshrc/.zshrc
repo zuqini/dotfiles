@@ -113,7 +113,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
-alias vim="env TERM=wezterm nvim"
+alias vim="nvim"
 alias vimnp="nvim -u ~/.config/nvim/noplugin.vim" # vim noplugin
 alias viml="\vim" # vim legacy
 alias skbr="sketchybar --reload"
