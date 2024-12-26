@@ -11,16 +11,8 @@ fi
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # font
+brew install --cask font-iosevka
 brew install --cask font-iosevka-nerd-font
-
-# wezterm
-which -s wezterm
-if [[ $? != 0 ]] ; then
-  echo "Installing wezterm"
-  brew install wezterm
-else
-  echo "wezterm already installed"
-fi
 
 which -s stow
 if [[ $? != 0 ]] ; then
@@ -71,7 +63,7 @@ stow tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # terminal configs
-stow wezterm
+stow wezterm ghostty kitty
 
 # global git configs
 stow git

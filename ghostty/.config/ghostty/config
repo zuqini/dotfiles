@@ -1,0 +1,6 @@
+theme=terafox
+font-family=Iosevka Term
+font-size=16
+
+background-opacity = 0.88
+background-blur-radius = 30

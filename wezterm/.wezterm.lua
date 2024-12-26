@@ -20,7 +20,7 @@ config.tab_bar_at_bottom = true
 config.window_background_opacity = 0.95
 config.color_scheme = 'terafox'
 
--- config.font = wezterm.font("InputMonoCondensed", { stretch = "Condensed" })
+-- config.font = wezterm.font("Iosevka Term") -- this is super slow on macOS for some reason. https://github.com/wez/wezterm/issues/3890
 config.font = wezterm.font("Iosevka Nerd Font")
 config.font_size = 14
 config.line_height = 1
