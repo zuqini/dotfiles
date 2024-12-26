@@ -12,7 +12,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # font
 brew install --cask font-iosevka
-brew install --cask font-iosevka-nerd-font
 
 which -s stow
 if [[ $? != 0 ]] ; then
