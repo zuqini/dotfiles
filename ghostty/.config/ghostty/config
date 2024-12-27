@@ -5,8 +5,9 @@ font-size = 16
 background-opacity = 0.88
 background-blur-radius = 30
 
-window-padding-x = 4
-window-padding-y = 4
-window-padding-balance = true
+# macos-titlebar-style = hidden
+# window-padding-x = 4
+# window-padding-y = 4
+# window-padding-balance = true
 
-macos-titlebar-style = hidden
+confirm-close-surface = false
