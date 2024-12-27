@@ -8,8 +8,7 @@ background-blur-radius = 30
 macos-option-as-alt = left
 
 # macos-titlebar-style = hidden
-# window-padding-x = 4
-# window-padding-y = 4
-# window-padding-balance = true
+window-padding-balance = true
+window-padding-x = 4
 
 confirm-close-surface = false
