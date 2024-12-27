@@ -15,6 +15,7 @@ git clone --recurse-submodules --remote-submodules https://github.com/zuqini/dot
 # powershell
 New-Item -ItemType SymbolicLink -path ~\AppData\Local\nvim\ -value C:\Users\{username}\dotfiles\nvim\.config\nvim
 New-Item -ItemType SymbolicLink -path ~ -name .wezterm.lua -value C:\Users\{username}\dotfiles\wezterm\.wezterm.lua
+New-Item -ItemType SymbolicLink -path ~ -name .gitconfig -value C:\Users\{username}\dotfiles\git\.gitconfig
 New-Item -ItemType SymbolicLink -path ~\Documents\WindowsPowerShell -name profile.ps1 -value C:\Users\{username}\dotfiles\misc\win\profile.ps1
 New-Item -ItemType SymbolicLink -path ~\Documents\PowerShell -name profile.ps1 -value C:\Users\{username}\dotfiles\misc\win\profile.ps1
 ```
