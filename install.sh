@@ -7,6 +7,22 @@ else
   echo "Homebrew already installed"
 fi
 
+which -s fd
+if [[ $? != 0 ]] ; then
+  echo "Installing fd"
+    brew install fd
+else
+  echo "fd already installed"
+fi
+
+which -s rg
+if [[ $? != 0 ]] ; then
+  echo "Installing rg"
+    brew install ripgrep
+else
+  echo "rg already installed"
+fi
+
 which -s ghostty
 if [[ $? != 0 ]] ; then
   echo "Installing Ghostty"
