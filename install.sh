@@ -89,7 +89,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 stow wezterm ghostty kitty
 
 # global git configs
-stow git
+stow gitconfig
+stow gitignore
 
 # zsh plugins
 git clone https://github.com/jeffreytse/zsh-vi-mode \
