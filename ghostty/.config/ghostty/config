@@ -12,3 +12,8 @@ window-padding-balance = true
 window-padding-x = 4
 
 confirm-close-surface = false
+
+macos-icon = custom-style
+macos-icon-frame = plastic
+macos-icon-ghost-color = #a1cdd8
+macos-icon-screen-color = #7aa4a1
