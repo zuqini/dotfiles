@@ -223,3 +223,9 @@ alt-shift-left = ['join-with left', 'exec-and-forget sketchybar --set service dr
 alt-shift-down = ['join-with down', 'exec-and-forget sketchybar --set service drawing=off', 'mode main']
 alt-shift-up = ['join-with up', 'exec-and-forget sketchybar --set service drawing=off', 'mode main']
 alt-shift-right = ['join-with right', 'exec-and-forget sketchybar --set service drawing=off', 'mode main']
+
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
+run= [
+  "layout floating",
+]
