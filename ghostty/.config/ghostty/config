@@ -7,6 +7,9 @@ background-blur-radius = 30
 
 macos-option-as-alt = left
 
+quick-terminal-position=bottom
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+
 # macos-titlebar-style = hidden
 window-padding-balance = true
 window-padding-x = 4
