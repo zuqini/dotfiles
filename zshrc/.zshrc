@@ -76,6 +76,10 @@ plugins=(
   zsh-autosuggestions
 )
 
+# completion
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+fpath+=~/.zfunc
+
 source $ZSH/oh-my-zsh.sh
 
 # ---------------------------------------------------------------------------------------------
@@ -128,10 +132,6 @@ unsetopt autocd
 
 source ~/dotfiles/.custom_commands.sh
 [[ -f "$HOME/work.sh" ]] && source ~/work.sh
-
-# completion
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-fpath+=~/.zfunc
 
 # Custom PATHs ====================================================================
 export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
