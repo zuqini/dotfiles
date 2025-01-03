@@ -1,30 +1,27 @@
 # install brew
-which -s brew
-if [[ $? != 0 ]] ; then
+if ! which -s brew; then
   echo "Installing Homebrew"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
   echo "Homebrew already installed"
 fi
 
-which -s fd
-if [[ $? != 0 ]] ; then
+
+if ! which -s fd; then
   echo "Installing fd"
     brew install fd
 else
   echo "fd already installed"
 fi
 
-which -s rg
-if [[ $? != 0 ]] ; then
+if ! which -s rg; then
   echo "Installing rg"
     brew install ripgrep
 else
   echo "rg already installed"
 fi
 
-which -s ghostty
-if [[ $? != 0 ]] ; then
+if ! which -s ghostty; then
   echo "Installing Ghostty"
   brew install ghostty
 else
@@ -37,7 +34,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # font
 brew install --cask font-iosevka
 
-which -s stow
+! which -s stow
 if [[ $? != 0 ]] ; then
   echo "Installing stow"
   brew install stow
@@ -46,16 +43,14 @@ else
 fi
 
 # tiling window manager
-which -s aerospace
-if [[ $? != 0 ]] ; then
+if ! which -s aerospace; then
   echo "Installing aerospace"
   brew install --cask nikitabobko/tap/aerospace
 else
   echo "aerospace already installed"
 fi
 
-which -s sketchybar
-if [[ $? != 0 ]] ; then
+if ! which -s sketchybar; then
   echo "Installing sketchybar"
   brew tap FelixKratz/formulae
   brew install sketchybar
