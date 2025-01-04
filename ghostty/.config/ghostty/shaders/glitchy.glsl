@@ -90,18 +90,21 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     float glitchAmount = SS(DURATION * .001, DURATION * AMT, mod(t, DURATION));  
 	float displayNoise = 0.;
     vec3 col = vec3(0.);
-    vec2 eps = vec2(5. / iResolution.x, 0.);
+    // vec2 eps = vec2(5. / iResolution.x, 0.);
+    vec2 eps = vec2(3. / iResolution.x, 0.);
     vec2 st = vec2(0.);
 
     // analog distortion
     float y = uv.y * iResolution.y;
-    float distortion = gnoise(vec3(0., y * .01, t * 500.)) * (glitchAmount * 4. + .1);
-    distortion *= gnoise(vec3(0., y * .02, t * 250.)) * (glitchAmount * 2. + .025);
-
-    ++displayNoise;
-    distortion += smoothstep(.999, 1., sin((uv.y + t * 1.6) * 2.)) * .02;
-    distortion -= smoothstep(.999, 1., sin((uv.y + t) * 2.)) * .02;
-    st = uv + vec2(distortion, 0.);
+    float distortion = 0.;
+    st = uv;
+    // float distortion = gnoise(vec3(0., y * .01, t * 500.)) * (glitchAmount * 4. + .1);
+    // distortion *= gnoise(vec3(0., y * .02, t * 250.)) * (glitchAmount * 2. + .025);
+    //
+    // ++displayNoise;
+    // distortion += smoothstep(.999, 1., sin((uv.y + t * 1.6) * 2.)) * .02;
+    // distortion -= smoothstep(.999, 1., sin((uv.y + t) * 2.)) * .02;
+    // st = uv + vec2(distortion, 0.);
     // chromatic aberration
     col.r += textureLod(iChannel0, st + eps + distortion, 0.).r;
     col.g += textureLod(iChannel0, st, 0.).g;
