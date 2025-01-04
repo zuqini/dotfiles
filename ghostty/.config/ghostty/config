@@ -10,11 +10,15 @@ macos-option-as-alt = left
 quick-terminal-position=bottom
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 
-# macos-titlebar-style = hidden
+macos-titlebar-style = hidden
 window-padding-balance = true
 window-padding-x = 4
 
 confirm-close-surface = false
+
+# custom-shader = ./shaders/bettercrt.glsl
+# custom-shader = ./shaders/glitchy.glsl
+# custom-shader = ./shaders/bloom.glsl
 
 macos-icon = custom-style
 macos-icon-frame = plastic
