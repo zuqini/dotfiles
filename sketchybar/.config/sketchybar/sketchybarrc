@@ -67,8 +67,8 @@ for sid in $(aerospace list-workspaces --all); do
         script="$PLUGIN_DIR/aerospace.sh $sid"
 done
 
-sketchybar --set space.1 label.padding_left=18 \
-    --set space.10 label.padding_right=18
+# sketchybar --set space.1 label.padding_left=18 \
+#     --set space.10 label.padding_right=18
 
 sketchybar --add item front_app left \
         --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
@@ -140,7 +140,7 @@ sketchybar --add item front_app left \
         --subscribe slack mouse.entered mouse.exited
 
 sketchybar \
-    --add bracket left_items apple.logo space.1 space.2 space.3 space.4 space.5 space.6 space.7 space.8 space.9 space.10 front_app \
+    --add bracket left_items apple.logo '/space\..*/' front_app \
         --set left_items background.color=0xcc152528 \
         background.corner_radius=9 \
         blur_radius=5 \
@@ -152,7 +152,7 @@ sketchybar \
         blur_radius=5 \
         background.border_color=0xcc254147 \
         background.border_width=1 \
-    --add bracket spaces space.1 space.2 space.3 space.4 space.5 space.6 space.7 space.8 space.9 space.10 \
+    --add bracket spaces '/space\..*/' \
         --set spaces background.color=0x88264048 \
         background.corner_radius=8 \
         background.height=22 \
