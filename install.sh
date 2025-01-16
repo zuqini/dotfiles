@@ -6,7 +6,6 @@ else
   echo "Homebrew already installed"
 fi
 
-
 if ! which -s fd; then
   echo "Installing fd"
     brew install fd
@@ -34,8 +33,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # font
 brew install --cask font-iosevka
 
-! which -s stow
-if [[ $? != 0 ]] ; then
+if ! which -s stow; then
   echo "Installing stow"
   brew install stow
 else
