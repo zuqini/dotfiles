@@ -77,6 +77,8 @@ bob complete zsh > ~/.zfunc/_bob
 stow tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+stow yazi
+
 # terminal configs
 stow wezterm ghostty kitty
 
