@@ -1,5 +1,6 @@
 let mapleader = " "
 set easymotion
+set mini-ai
 
 nmap S <Plug>(easymotion-s2)
 nmap gri :action GotoImplementation<CR>
