@@ -1,8 +1,14 @@
 let mapleader = " "
 set easymotion
 set mini-ai
+set commentary
+set surround
+set peekaboo
+set textobj-indent
+set highlightedyank
 
-nmap S <Plug>(easymotion-s2)
+nmap s <Plug>(easymotion-s2)
+
 nmap gri :action GotoImplementation<CR>
 nmap grn :action RenameElement<CR>
 nmap grr :action GotoDeclaration<CR>
