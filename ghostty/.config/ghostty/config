@@ -24,3 +24,6 @@ macos-icon = custom-style
 macos-icon-frame = plastic
 macos-icon-ghost-color = #a1cdd8
 macos-icon-screen-color = #7aa4a1
+
+# for claude code
+keybind = shift+enter=text:\x1b\r
