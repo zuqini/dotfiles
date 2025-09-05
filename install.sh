@@ -67,8 +67,11 @@ ln -s ${DOTFILES_PATH}/misc/themes/oh-my-zsh/lambdim-zsh-theme/lambdim.zsh-theme
 # macos tiling windows manager and bar
 stow aerospace sketchybar
 
-# editors + AI
-stow nvim idea doom claude
+# editors
+stow nvim idea doom
+
+# AI
+stow claude gemini
 
 mkdir -p ~/.zfunc
 bob complete zsh > ~/.zfunc/_bob
