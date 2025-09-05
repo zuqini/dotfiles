@@ -122,6 +122,8 @@ alias vimnp="nvim -u ~/.config/nvim/noplugin.vim" # vim noplugin
 alias viml="\vim" # vim legacy
 alias skbr="sketchybar --reload"
 
+alias claude="$HOME/.claude/local/claude"
+
 # For Godot Engine
 # In "Editor Sessings/Text Editor/External", set Exec Flags to --server ./godothost --remote-send "<C-N>:n {file}<CR>{line}G{col}|"
 alias vimgd="vim --listen ./godothost"
@@ -140,7 +142,7 @@ export PATH=$PATH:$HOME/.config/emacs/bin
 export PATH=$PATH:$HOME/Development/flutter/bin
 export PATH=$PATH:$HOME/.dotnet/tools
 export PATH=$PATH:/Applications/love.app/Contents/MacOS/
-# NVIM Language Servers on the path for Helix
+# NVIM Language Servers on the path for Helix/MCPs
 export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 # Framework override for C# LSP
 export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current
