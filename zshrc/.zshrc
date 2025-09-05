@@ -119,7 +119,6 @@ export NVM_DIR="$HOME/.nvm"
 # https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
 alias vim="nvim"
 alias vimnp="nvim -u ~/.config/nvim/noplugin.vim" # vim noplugin
-alias viml="\vim" # vim legacy
 alias skbr="sketchybar --reload"
 
 alias claude="$HOME/.claude/local/claude"
@@ -133,6 +132,11 @@ alias ht="history -t '%y-%m-%d %T'"
 unsetopt autocd
 
 source ~/dotfiles/.custom_commands.sh
+
+# uv
+[[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
+
+# work specific
 [[ -f "$HOME/work.sh" ]] && source ~/work.sh
 
 # Custom PATHs ====================================================================
