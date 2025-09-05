@@ -136,9 +136,6 @@ source ~/dotfiles/.custom_commands.sh
 # uv
 [[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
 
-# work specific
-[[ -f "$HOME/work.sh" ]] && source ~/work.sh
-
 # Custom PATHs ====================================================================
 export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 export PATH=/usr/local/opt/llvm/bin:$PATH
@@ -160,3 +157,6 @@ function zvm_after_init() {
     source <(fzf --zsh)
     bindkey '^ ' autosuggest-accept
 }
+
+# source work specific stuff at the end
+[[ -f "$HOME/work.sh" ]] && source ~/work.sh
