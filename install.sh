@@ -8,16 +8,23 @@ fi
 
 if ! which -s fd; then
   echo "Installing fd"
-    brew install fd
+  brew install fd
 else
   echo "fd already installed"
 fi
 
 if ! which -s rg; then
   echo "Installing rg"
-    brew install ripgrep
+  brew install ripgrep
 else
   echo "rg already installed"
+fi
+
+if ! which -s ast-grep; then
+  echo "Installing ast-grep"
+  brew install ast-grep
+else
+  echo "ast-grep already installed"
 fi
 
 if ! which -s ghostty; then
