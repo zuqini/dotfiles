@@ -230,6 +230,6 @@ run= [
   "layout floating",
 ]
 
-# Intel mac PATH bug, See https://github.com/nikitabobko/AeroSpace/issues/556#issuecomment-2392419701
-[exec.env-vars]
-PATH = '/usr/local/bin:${PATH}'
+# # Intel mac PATH bug, See https://github.com/nikitabobko/AeroSpace/issues/556#issuecomment-2392419701
+# [exec.env-vars]
+# PATH = '/usr/local/bin:${PATH}'
