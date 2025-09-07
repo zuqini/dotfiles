@@ -74,7 +74,10 @@ plugins=(
   git
   zsh-vi-mode
   zsh-autosuggestions
+  nvm
 )
+
+zstyle ':omz:plugins:nvm' lazy yes
 
 # completion
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -111,10 +114,6 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
 alias vim="nvim"
