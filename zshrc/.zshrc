@@ -120,7 +120,7 @@ alias vim="nvim"
 alias vimnp="nvim -u ~/.config/nvim/noplugin.vim" # vim noplugin
 alias skbr="sketchybar --reload"
 
-alias claude="$HOME/.claude/local/claude"
+alias claude="~/.claude/local/claude"
 
 # For Godot Engine
 # In "Editor Sessings/Text Editor/External", set Exec Flags to --server ./godothost --remote-send "<C-N>:n {file}<CR>{line}G{col}|"
