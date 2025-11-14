@@ -6,6 +6,15 @@ else
   echo "Homebrew already installed"
 fi
 
+if ! which -s cargo; then
+  echo "Installing Rust"
+    curl https://sh.rustup.rs -sSf | sh
+else
+  echo "Rust already installed"
+fi
+
+
+
 if ! which -s fd; then
   echo "Installing fd"
   brew install fd
@@ -63,7 +72,21 @@ else
   echo "sketchybar already installed"
 fi
 
-# https://stackoverflow.com/a/246129
+if ! which -s tree-sitter; then
+  echo "Installing tree-sitter-cli"
+    cargo install --locked tree-sitter-cli
+else
+  echo "tree-sitter-cli already installed"
+fi
+
+if ! which -s bob; then
+  echo "Installing bob-nvim"
+  cargo install bob-nvim
+else
+  echo "bob-nvim already installed"
+fi
+
+# finds the absolute path to the directory containing this script
 DOTFILES_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 stow zshrc
