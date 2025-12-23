@@ -1,8 +1,11 @@
 {
+  "includeCoAuthoredBy": false,
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline-command.sh"
   },
-  "includeCoAuthoredBy": false,
-  "gitAttribution": false
+  "gitAttribution": false,
+  "enabledPlugins": {
+    "lua-lsp@claude-plugins-official": true
+  }
 }
