@@ -4,8 +4,8 @@
     "type": "command",
     "command": "~/.claude/statusline-command.sh"
   },
-  "gitAttribution": false,
   "enabledPlugins": {
     "lua-lsp@claude-plugins-official": true
-  }
+  },
+  "gitAttribution": false
 }

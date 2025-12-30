@@ -9,6 +9,8 @@ You run in an environment where ast-grep is available; whenever a search require
 Always update both the README.md and the vimdocs after making code changes.
 When committing, always follow proper open-source commit message standards.
 
+To run tests, use `nvim -u NONE --headless -S run_tests.lua`.
+
 # Using Gemini CLI for Large Codebase Analysis
 
 When analyzing large codebases or multiple files that might exceed context limits, use the Gemini CLI with its massive
