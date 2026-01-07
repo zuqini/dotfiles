@@ -13,8 +13,6 @@ else
   echo "Rust already installed"
 fi
 
-
-
 if ! which -s fd; then
   echo "Installing fd"
   brew install fd
@@ -42,6 +40,15 @@ if ! which -s ghostty; then
 else
   echo "Ghostty already installed"
 fi
+
+# zellij
+# if ! which -s zellij; then
+#   echo "Installing ZelliJ"
+#   brew install zellij
+# else
+#   echo "ZelliJ already installed"
+# fi
+# stow zellij
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
