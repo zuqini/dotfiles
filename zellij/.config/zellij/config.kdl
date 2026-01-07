@@ -6,6 +6,11 @@ keybinds clear-defaults=true {
         bind "k" {
             WriteChars "\u{000C}";
             Clear;
+            SwitchToMode "locked";
+        }
+        bind "Ctrl a" {
+            Write 1; // ctrl-a pass-through
+            SwitchToMode "locked";
         }
     }
     pane {
