@@ -128,6 +128,7 @@ alias coder="npx -y @just-every/code"
 alias vimgd="vim --listen ./godothost"
 alias k="kubectl"
 alias ht="history -t '%y-%m-%d %T'"
+alias z="zellij"
 
 unsetopt autocd
 

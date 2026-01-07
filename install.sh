@@ -42,13 +42,13 @@ else
 fi
 
 # zellij
-# if ! which -s zellij; then
-#   echo "Installing ZelliJ"
-#   brew install zellij
-# else
-#   echo "ZelliJ already installed"
-# fi
-# stow zellij
+if ! which -s zellij; then
+  echo "Installing ZelliJ"
+  brew install zellij
+else
+  echo "ZelliJ already installed"
+fi
+stow zellij
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
