@@ -3,7 +3,7 @@ keybinds clear-defaults=true {
         bind "Ctrl a" { SwitchToMode "normal"; }
     }
     normal {
-        bind "k" {
+        bind "l" {
             WriteChars "\u{000C}";
             Clear;
             SwitchToMode "locked";
@@ -177,7 +177,6 @@ keybinds clear-defaults=true {
         bind "Alt Shift p" { ToggleGroupMarking; }
     }
     shared_except "locked" "renametab" "renamepane" {
-        bind "Ctrl g" { SwitchToMode "locked"; }
         bind "Ctrl q" { Quit; }
     }
     shared_except "locked" "entersearch" {
