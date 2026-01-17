@@ -34,6 +34,14 @@ else
   echo "ast-grep already installed"
 fi
 
+if ! which -s bd; then
+  echo "Installing beads"
+  brew install steveyegge/beads/bd
+  bd init
+else
+  echo "beads already installed"
+fi
+
 if ! which -s ghostty; then
   echo "Installing Ghostty"
   brew install ghostty
