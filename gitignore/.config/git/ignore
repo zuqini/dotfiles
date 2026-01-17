@@ -16,3 +16,4 @@ cscope.in.out
 cscope.po.out
 
 **/.claude/settings.local.json
+**/claude/.claude/work.md
