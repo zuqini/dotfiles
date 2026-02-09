@@ -161,3 +161,6 @@ function zvm_after_init() {
 
 # source work specific stuff at the end
 [[ -f "$HOME/work.sh" ]] && source ~/work.sh
+
+# Created by `pipx` on 2026-02-06 20:05:54
+export PATH="$PATH:/Users/zachli/.local/bin"
