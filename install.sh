@@ -161,4 +161,12 @@ else
   echo "wezterm terminfo already installed"
 fi
 
+# browser screenshot utility
+if [[ ! -d "${DOTFILES_PATH}/utilities/browser-screenshot/node_modules" ]]; then
+  echo "Installing browser-screenshot dependencies"
+  (cd "${DOTFILES_PATH}/utilities/browser-screenshot" && npm install && npx playwright install chromium)
+else
+  echo "browser-screenshot already installed"
+fi
+
 echo "Done!"
