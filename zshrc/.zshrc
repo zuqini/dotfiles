@@ -13,7 +13,7 @@ export PATH=$PATH:$HOME/Development/flutter/bin
 export PATH=$PATH:$HOME/.dotnet/tools
 export PATH=$PATH:/Applications/love.app/Contents/MacOS/
 export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
-export PATH="$PATH:/Users/zachli/.local/bin"
+export PATH=$PATH:$HOME/.local/bin
 
 # Framework override for C# LSP
 export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current
