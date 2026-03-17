@@ -62,7 +62,7 @@ brew_install ast-grep
 # beads issue tracker
 if ! command -v bd &>/dev/null; then
   echo "Installing beads"
-  brew install steveyegge/beads/bd
+  brew install beads
 else
   echo "beads already installed"
 fi
