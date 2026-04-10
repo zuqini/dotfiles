@@ -1,4 +1,5 @@
 {
+  "showClearContextOnPlanAccept": true,
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
