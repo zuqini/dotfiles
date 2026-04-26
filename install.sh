@@ -59,14 +59,6 @@ brew_install fd
 brew_install rg ripgrep
 brew_install ast-grep
 
-# beads issue tracker
-if ! command -v bd &>/dev/null; then
-  echo "Installing beads"
-  brew install beads
-else
-  echo "beads already installed"
-fi
-
 # terminals
 brew_install ghostty
 brew_install zellij
