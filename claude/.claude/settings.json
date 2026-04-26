@@ -1,5 +1,4 @@
 {
-  "showClearContextOnPlanAccept": true,
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
@@ -35,7 +34,8 @@
       "Bash(python3:*)",
       "Update(*)"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "auto"
   },
   "statusLine": {
     "type": "command",
@@ -45,5 +45,8 @@
     "lua-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
-  "gitAttribution": false
+  "showClearContextOnPlanAccept": true,
+  "skipAutoPermissionPrompt": true,
+  "gitAttribution": false,
+  "editorMode": "vim"
 }
