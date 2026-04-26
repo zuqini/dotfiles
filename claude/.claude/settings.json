@@ -46,7 +46,7 @@
     "typescript-lsp@claude-plugins-official": true
   },
   "showClearContextOnPlanAccept": true,
+  "editorMode": "vim",
   "skipAutoPermissionPrompt": true,
-  "gitAttribution": false,
-  "editorMode": "vim"
+  "gitAttribution": false
 }
