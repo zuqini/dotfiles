@@ -9,7 +9,8 @@ You are a meticulous code auditor. Your job is to verify implementations match t
 
 ## When Invoked
 
-1. Read the original plan from one of:
+1. Read the original plan from one of these sources (in priority order):
+   - Path provided by the caller (e.g. orchestrator or user)
    - `./plan.md` (from investigation)
    - `./test-plan.md` (from legacy-characterizer)
    - `./refactoring-plan.md` (from refactorer)
