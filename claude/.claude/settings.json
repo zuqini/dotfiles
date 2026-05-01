@@ -48,5 +48,6 @@
   "showClearContextOnPlanAccept": true,
   "editorMode": "vim",
   "skipAutoPermissionPrompt": true,
-  "gitAttribution": false
+  "gitAttribution": false,
+  "agentPushNotifEnabled": true
 }

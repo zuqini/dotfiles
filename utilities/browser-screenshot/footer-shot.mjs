@@ -1,0 +1,13 @@
+import { chromium } from "playwright";
+const url = process.argv[2];
+const w = parseInt(process.argv[3] || "1280");
+const h = parseInt(process.argv[4] || "800");
+const out = process.argv[5] || "/tmp/footer-area.png";
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: w, height: h } });
+await page.goto(url, { waitUntil: "networkidle" });
+await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+await page.waitForTimeout(500);
+await page.screenshot({ path: out });
+await browser.close();
+console.log(out);
