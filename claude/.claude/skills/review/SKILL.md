@@ -15,9 +15,13 @@ Run a parallel multi-reviewer pass on a **change** and merge findings into a sin
 
    Use the first non-empty result. Capture the diff with Bash before spawning subagents.
 
+## Load prior decisions
+
+@~/.claude/skills/_shared/review-decisions-preamble.md
+
 ## Reviewers (run in parallel)
 
-Spawn these subagents in a **single message** with parallel Agent tool calls. Each gets the same target and an equivalent brief:
+Spawn these subagents in a **single message** with parallel Agent tool calls. Each gets the same target, the decisions-file context above (if any), and an equivalent brief:
 
 - **bug-finder** — logical errors, async pitfalls, null/undefined, off-by-ones, unhandled edge cases.
 - **structural-completeness-reviewer** — change is fully integrated: dead code removed, all layers updated, no dev artifacts (TODOs, console.logs, commented blocks), dependencies/config consistent.
@@ -43,6 +47,12 @@ After all reviewers return, produce one consolidated report:
 ```
 
 Tag each finding with the reviewer it came from. Deduplicate when two reviewers raise the same point — keep the more specific phrasing and note both reviewers flagged it.
+
+If any reviewer returned a `Decision to revisit` item, surface it as its own section above the findings so the user can decide whether to update `.claude/review-decisions.md`.
+
+## Capturing decisions
+
+@~/.claude/skills/_shared/review-decisions-capture.md
 
 ## Scope
 

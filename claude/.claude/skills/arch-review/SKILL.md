@@ -15,13 +15,22 @@ Run a thorough **system or module-scope** architectural review using the **archi
    /arch-review src/workers/ingest src/workers/dispatch src/shared/queue
    ```
 
+## Load prior decisions
+
+@~/.claude/skills/_shared/review-decisions-preamble.md
+
 ## Subagent brief
 
 Spawn `architecture-reviewer` with:
 - The target list (project root `.`, or the paths from `$ARGUMENTS`)
 - When multiple paths are passed: an explicit instruction to treat them as one connected target — evaluate inter-path coupling and pattern divergence across them
+- The decisions-file context above (if any)
 - Reminder that the report should evaluate against **Separation of Concerns, SOLID, Scalability, and Maintainability**, with file paths and line numbers as evidence
-- Final report format: Executive Summary, Strengths, Critical Risks, Areas for Improvement
+- Final report format: Executive Summary, Strengths, Critical Risks, Areas for Improvement, plus a `Decisions to revisit` section for any prior decision the reviewer believes is now wrong
+
+## Capturing decisions
+
+@~/.claude/skills/_shared/review-decisions-capture.md
 
 ## When to use this vs `/review`
 
