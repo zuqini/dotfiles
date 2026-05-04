@@ -13,3 +13,7 @@ You run in an environment where ast-grep is available; whenever a search require
 When coding, ***DO NOT*** add comments unless the logic is non-obvious. Code should be self-documenting.
 
 When pushing to version control, never force push.
+
+## Code review
+
+Before filing review findings, read `.claude/review-decisions.md` if it exists in the project root — accepted tradeoffs documented there should not be re-flagged.
