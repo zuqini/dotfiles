@@ -2,7 +2,7 @@ theme = terafox
 font-family = Iosevka Term
 font-size = 16
 
-background-opacity = 0.7
+background-opacity = 0.8
 background-blur-radius = 30
 
 macos-option-as-alt = left
