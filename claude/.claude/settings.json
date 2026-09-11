@@ -37,17 +37,19 @@
     "deny": [],
     "defaultMode": "auto"
   },
+  "model": "fable[1m]",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "lua-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
   },
   "showClearContextOnPlanAccept": true,
   "editorMode": "vim",
+  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "gitAttribution": false,
-  "agentPushNotifEnabled": true
+  "gitAttribution": false
 }
