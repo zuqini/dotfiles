@@ -126,6 +126,7 @@ stow claude gemini
 stow tmux
 clone_if_missing https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+stow herdr
 stow yazi
 
 # terminal configs
