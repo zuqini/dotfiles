@@ -51,5 +51,6 @@
   "editorMode": "vim",
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "gitAttribution": false
+  "gitAttribution": false,
+  "hooks": {"SessionStart":[{"matcher":"*","hooks":[{"type":"command","command":"bash '/Users/zuqini/.claude/hooks/herdr-agent-state.sh' session","timeout":10}]}]}
 }
