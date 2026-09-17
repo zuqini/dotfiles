@@ -16,4 +16,4 @@ When pushing to version control, never force push.
 
 ## Code review
 
-Before filing review findings, read `.claude/review-decisions.md` if it exists in the project root — accepted tradeoffs documented there should not be re-flagged.
+Before filing review findings, check whether beads is set up (`bd where` exits 0). If so, consider the active beads (`bd list --flat --long --no-pager`) — `decision` beads are accepted tradeoffs that should not be re-flagged, and other open beads are already-tracked work that should not be refiled. If beads is not set up, read `.claude/review-decisions.md` if it exists in the project root instead.

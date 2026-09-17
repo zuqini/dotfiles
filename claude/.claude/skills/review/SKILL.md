@@ -48,7 +48,7 @@ After all reviewers return, produce one consolidated report:
 
 Tag each finding with the reviewer it came from. Deduplicate when two reviewers raise the same point — keep the more specific phrasing and note both reviewers flagged it.
 
-If any reviewer returned a `Decision to revisit` item, surface it as its own section above the findings so the user can decide whether to update `.claude/review-decisions.md`.
+If any reviewer returned a `Decision to revisit` item, surface it as its own section above the findings so the user can decide whether to update the decision bead (or `.claude/review-decisions.md` when beads is not set up).
 
 ## Capturing decisions
 
