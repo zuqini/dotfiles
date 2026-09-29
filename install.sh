@@ -120,7 +120,7 @@ stow aerospace sketchybar
 stow nvim idea doom
 
 # AI
-stow claude gemini
+stow claude
 
 # tmux
 stow tmux
