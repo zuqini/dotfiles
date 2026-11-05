@@ -65,3 +65,7 @@ investigation | implementer | (bug-finder, design-reviewer) | (if findings > 0 t
 2. Spawn the `orchestrator` subagent with both.
 3. The orchestrator parses the pipeline, executes each stage, manages artifact handoffs, and writes `./pipeline-status.md` for traceability.
 4. Surface the final report from the orchestrator back to the user.
+
+## Scope
+
+Pipelines run as subagents inside one session. For work that will run for hours, needs a separate worktree per workstream, or should be steerable one workstream at a time, use the `lanes` skill.
