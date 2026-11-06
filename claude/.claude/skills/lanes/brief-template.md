@@ -4,7 +4,8 @@ Every session of this lane reads this first. The coordinator owns this file; the
 
 ## Lane
 
-- Name: `<slug>-<lane>`. Coordinator: `<coordinator session name>` (updated here whenever the coordinator changes).
+- Name: `<slug>-<lane>`. Coordinator: `<coordinator session name> [<ref>]` (updated here whenever the coordinator changes).
+- Untrusted input: <no | yes: what, and the sandbox settings that apply>
 - Worktree: `~/workspace/<slug>/<repo>.<lane>.tmp`, branch `<slug>-<lane>`, based on `<slug>` at `<sha>`. Work only here; never in `~/projects/<repo>`.
 - Log: `~/workspace/<slug>/lanes/<lane>/LOG.md`. Task spec, for context only: `~/workspace/<slug>/TASK.md`.
 
@@ -17,23 +18,31 @@ Every session of this lane reads this first. The coordinator owns this file; the
 - Changes: <paths, modules>
 - Doesn't touch: <paths other lanes own; shared interfaces frozen at <sha>>
 
-## Setup
+## Setup and tools
 
 Run once in a fresh worktree; a worktree has no gitignored files or installed dependencies:
 
 - `<install / build / env copy commands>`
 
+Build and test with `<commands>`. Use <skills, subagents, docs and data sources that apply>; don't use <tools or sources that are off limits>.
+
+## Conventions
+
+Fixed for every lane of this task; change only through the coordinator:
+
+- <error handling, naming, dependencies, shared interfaces at <sha>>
+
 ## Milestones
 
-In order, one at a time. Signal MILESTONE after each.
+In order, one at a time. Signal MILESTONE after each and keep going, except after one marked `(wait)`.
 
-1. <milestone>: done when `<check>` → <expected>
+1. <milestone>: done when `accept.sh 1` passes
 
 ## Acceptance checks
 
-`~/workspace/<slug>/lanes/<lane>/accept.sh` (coordinator-owned, exits 0 when the lane is done). The lane runs it at session start and before MILESTONE or DONE; the coordinator runs the same script to verify. It runs:
+`~/workspace/<slug>/lanes/<lane>/accept.sh [N]` (coordinator-owned). It runs the checks for milestones 1..N, all of them without N, prints one `PASS`/`FAIL m<k>: <check>` line each, and exits 0 only when every one passes. The lane runs it at session start and before MILESTONE or DONE; the coordinator runs the same script to verify. Checks:
 
-- `<command>` → <expected>
+- m1: `<command>` → <expected>
 
 ## Budget
 
