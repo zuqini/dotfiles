@@ -3,8 +3,9 @@
 
 Deny rules match the command text as usually written, so `git -C . push` or
 `bash -c 'git push'` slip past them. This parses each subcommand, skips git's
-global options, and recurses into quoted strings. Defense in depth, not a
-security boundary.
+global options and command wrappers, and recurses into code handed to a shell
+or interpreter and into command substitutions. Defense in depth, not a
+security boundary. Any internal error blocks the command.
 """
 import json
 import os
@@ -12,8 +13,17 @@ import re
 import shlex
 import sys
 
-SEPARATORS = {"&&", "||", ";", "|", "|&", "&", "(", ")", ";;"}
-WRAPPERS = {"env", "command", "builtin", "exec", "nohup", "time", "nice", "xargs", "sudo", "timeout"}
+SEPARATORS = {"&&", "||", ";", "|", "|&", "&", "(", ")", ";;", "\n", "`", "{", "}"}
+KEYWORDS = {"!", "if", "then", "else", "elif", "do", "while", "until", "time"}
+WRAPPERS = {
+    "env", "command", "builtin", "exec", "nohup", "nice", "xargs", "sudo", "timeout", "eval",
+    "stdbuf", "watch", "setsid", "flock", "ionice", "noglob", "caffeinate",
+}
+INTERPRETERS = {
+    "sh", "bash", "zsh", "dash", "ksh", "fish", "eval", "ssh",
+    "python", "python3", "perl", "ruby", "node", "osascript",
+}
+GUARDED = {"git", "gh", "claude"}
 GIT_OPTS_WITH_ARG = {"-C", "-c", "--git-dir", "--work-tree", "--namespace", "--exec-path", "--config-env"}
 GH_READ_ONLY = {"view", "list", "status", "diff", "checks", "checkout", "clone", "search"}
 GH_GUARDED = {"pr", "issue", "release", "repo", "gist", "secret", "variable", "workflow", "run", "label"}
@@ -23,14 +33,16 @@ def program(tokens):
     i = 0
     while i < len(tokens):
         tok = tokens[i]
-        if re.match(r"^[A-Za-z_][A-Za-z0-9_]*=", tok):
+        if re.match(r"^[A-Za-z_][A-Za-z0-9_]*=", tok) or tok in KEYWORDS:
             i += 1
         elif os.path.basename(tok) in WRAPPERS:
-            i += 1
-            while i < len(tokens) and tokens[i].startswith("-"):
-                i += 1
-            if os.path.basename(tokens[i - 1]) == "timeout" and i < len(tokens):
-                i += 1
+            rest = tokens[i + 1:]
+            if os.path.basename(tok) == "command" and rest[:1] and rest[0] in {"-v", "-V"}:
+                return None, []
+            j = next((k for k, t in enumerate(rest) if os.path.basename(t) in GUARDED), None)
+            if j is None:
+                return os.path.basename(tok), rest
+            return os.path.basename(rest[j]), rest[j + 1:]
         else:
             return os.path.basename(tok), tokens[i + 1:]
     return None, []
@@ -39,12 +51,16 @@ def program(tokens):
 def git_reason(args):
     i = 0
     while i < len(args) and args[i].startswith("-"):
+        if args[i] == "-c" and i + 1 < len(args) and re.match(r"^alias\..*=.*\bpush\b", args[i + 1]):
+            return "git alias for push"
         i += 2 if args[i] in GIT_OPTS_WITH_ARG else 1
     sub, rest = (args[i], args[i + 1:]) if i < len(args) else (None, [])
-    if sub == "push" or "push" in rest and sub in {"remote", "subtree"}:
+    if sub in {"push", "send-pack"} or "push" in rest and sub in {"remote", "subtree"}:
         return "git push"
     if sub == "branch" and any(a in {"-d", "-D", "--delete"} or re.match(r"^-[a-zA-Z]*[dD]", a) for a in rest):
         return "git branch delete"
+    if sub == "update-ref" and "-d" in rest:
+        return "git update-ref -d"
     if sub == "worktree" and rest[:1] and rest[0] in {"remove", "prune"}:
         return "git worktree " + rest[0]
     return None
@@ -66,43 +82,47 @@ def gh_reason(args):
     return None
 
 
-def reasons(command, depth=0):
+def tokenize(command):
+    lexer = shlex.shlex(command.replace("`", " ` "), posix=True, punctuation_chars="();<>|&\n`")
+    lexer.whitespace = " \t\r"
+    lexer.whitespace_split = True
+    return list(lexer)
+
+
+def reasons(command, eager=False, depth=0):
     if depth > 4:
-        return []
+        return ["nesting too deep to check"]
     try:
-        lexer = shlex.shlex(command, posix=True, punctuation_chars=True)
-        lexer.whitespace_split = True
-        tokens = list(lexer)
+        tokens = tokenize(command)
     except ValueError:
         found = []
-        if re.search(r"\bgit\b.*\bpush\b", command):
+        if re.search(r"\bgit\b.*\b(push|send-pack)\b", command):
             found.append("git push (unparsed)")
         if re.search(r"\bclaude\b", command):
             found.append("claude CLI (unparsed)")
         return found
     found, current = [], []
     for tok in tokens + [";"]:
-        if tok in SEPARATORS:
-            name, args = program(current)
-            if name == "git":
-                found.append(git_reason(args))
-            elif name == "gh":
-                found.append(gh_reason(args))
-            elif name == "claude":
-                found.append("claude CLI")
-            current = []
-        else:
+        if tok not in SEPARATORS:
             current.append(tok)
-            if re.search(r"\s", tok):
-                found.extend(reasons(tok, depth + 1))
+            continue
+        name, args = program(current)
+        if name == "git":
+            found.append(git_reason(args))
+        elif name == "gh":
+            found.append(gh_reason(args))
+        elif name == "claude":
+            found.append("claude CLI")
+        nested_eager = eager or name in INTERPRETERS
+        for arg in current:
+            if re.search(r"\s", arg) and (nested_eager or re.search(r"\$\(|`|<\(", arg)):
+                found.extend(reasons(arg, nested_eager, depth + 1))
+        current = []
     return [r for r in found if r]
 
 
 def main():
-    try:
-        payload = json.load(sys.stdin)
-    except ValueError:
-        return 0
+    payload = json.load(sys.stdin)
     command = (payload.get("tool_input") or {}).get("command") or ""
     found = reasons(command)
     if found:
@@ -116,4 +136,8 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except Exception as e:
+        print(f"lane-guard failed ({type(e).__name__}: {e}); blocking to be safe.", file=sys.stderr)
+        sys.exit(2)
