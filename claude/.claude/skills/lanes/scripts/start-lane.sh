@@ -37,6 +37,12 @@ if [[ -n $overlap ]]; then
 fi
 
 guard="$(cd "$(dirname "$0")" && pwd -P)/lane-guard.py"
+# onFailure is 2.1.295+; older versions reject the whole --settings value and the lane exits at start.
+version=$(claude --version 2>/dev/null | grep -oE '^[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+on_failure=',"onFailure":"block"'
+if [[ -z $version || $(printf '%s\n' 2.1.295 "$version" | sort -V | head -1) != 2.1.295 ]]; then
+  on_failure=''
+fi
 lane_dir=$(dirname "$brief")
 settings='{"crossSessionInbound":"accept","permissions":{"deny":[
   "Bash(git push *)",
@@ -48,7 +54,7 @@ settings='{"crossSessionInbound":"accept","permissions":{"deny":[
   "Bash(gh release *)",
   "Bash(claude *)"
 ]},"hooks":{"PreToolUse":[{"matcher":"Bash","hooks":[
-  {"type":"command","command":"python3 -I '"$guard"'","onFailure":"block"}
+  {"type":"command","command":"python3 -I '"$guard"'"'"$on_failure"'}
 ]}]}}'
 
 prompt="You are lane $name. Read ~/.claude/skills/lanes/worker.md, then your brief at $brief, and follow both. Commit on your branch without asking; you never push. Rebuild your state from the brief, your LOG.md and git in this worktree; nothing else carries over."
