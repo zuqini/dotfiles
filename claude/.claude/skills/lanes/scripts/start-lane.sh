@@ -23,7 +23,7 @@ if [[ $git_dir == "$common_dir" ]]; then
   exit 1
 fi
 
-overlap=$(claude agents --json | python3 -c '
+overlap=$(claude agents --json --all | python3 -c '
 import json, sys
 name = sys.argv[1]
 for a in json.load(sys.stdin):
@@ -37,20 +37,21 @@ if [[ -n $overlap ]]; then
 fi
 
 guard="$(cd "$(dirname "$0")" && pwd -P)/lane-guard.py"
-settings='{"permissions":{"deny":[
-  "Bash(git push:*)",
-  "Bash(git branch -d:*)", "Bash(git branch -D:*)", "Bash(git worktree remove:*)",
-  "Bash(gh pr create:*)", "Bash(gh pr merge:*)", "Bash(gh pr close:*)",
-  "Bash(gh pr comment:*)", "Bash(gh pr review:*)", "Bash(gh pr edit:*)",
-  "Bash(gh issue create:*)", "Bash(gh issue close:*)",
-  "Bash(gh issue comment:*)", "Bash(gh issue edit:*)",
-  "Bash(gh release:*)",
-  "Bash(claude:*)"
+lane_dir=$(dirname "$brief")
+settings='{"crossSessionInbound":"accept","permissions":{"deny":[
+  "Bash(git push *)",
+  "Bash(git branch -d *)", "Bash(git branch -D *)", "Bash(git worktree remove *)",
+  "Bash(gh pr create *)", "Bash(gh pr merge *)", "Bash(gh pr close *)",
+  "Bash(gh pr comment *)", "Bash(gh pr review *)", "Bash(gh pr edit *)",
+  "Bash(gh issue create *)", "Bash(gh issue close *)",
+  "Bash(gh issue comment *)", "Bash(gh issue edit *)",
+  "Bash(gh release *)",
+  "Bash(claude *)"
 ]},"hooks":{"PreToolUse":[{"matcher":"Bash","hooks":[
-  {"type":"command","command":"python3 -I '"$guard"'"}
+  {"type":"command","command":"python3 -I '"$guard"'","onFailure":"block"}
 ]}]}}'
 
 prompt="You are lane $name. Read ~/.claude/skills/lanes/worker.md, then your brief at $brief, and follow both. Commit on your branch without asking; you never push. Rebuild your state from the brief, your LOG.md and git in this worktree; nothing else carries over."
 
 cd "$worktree"
-exec claude --bg "$prompt" -n "$name" --settings "$settings" "$@"
+exec claude --bg "$prompt" -n "$name" --add-dir "$lane_dir" --settings "$settings" "$@"
