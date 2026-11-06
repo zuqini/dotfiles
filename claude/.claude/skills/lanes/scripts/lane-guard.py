@@ -24,6 +24,7 @@ INTERPRETERS = {
     "python", "python3", "perl", "ruby", "node", "osascript",
 }
 GUARDED = {"git", "gh", "claude"}
+LANE_SCRIPTS = {"start-lane.sh", "lane-ctl.sh"}
 GIT_OPTS_WITH_ARG = {"-C", "-c", "--git-dir", "--work-tree", "--namespace", "--exec-path", "--config-env"}
 GH_READ_ONLY = {"view", "list", "status", "diff", "checks", "checkout", "clone", "search"}
 GH_GUARDED = {"pr", "issue", "release", "repo", "gist", "secret", "variable", "workflow", "run", "label"}
@@ -82,7 +83,21 @@ def gh_reason(args):
     return None
 
 
+def strip_quoted_heredocs(command):
+    out, lines, i = [], command.split("\n"), 0
+    while i < len(lines):
+        out.append(lines[i])
+        delims = re.findall(r"<<-?\s*(['\"])([^'\"\s]+)\1", lines[i])
+        i += 1
+        for _, delim in delims:
+            while i < len(lines) and lines[i].strip() != delim:
+                i += 1
+            i += 1
+    return "\n".join(out)
+
+
 def tokenize(command):
+    command = strip_quoted_heredocs(command)
     lexer = shlex.shlex(command.replace("`", " ` "), posix=True, punctuation_chars="();<>|&\n`")
     lexer.whitespace = " \t\r"
     lexer.whitespace_split = True
@@ -113,6 +128,8 @@ def reasons(command, eager=False, depth=0):
             found.append(gh_reason(args))
         elif name == "claude":
             found.append("claude CLI")
+        if any(os.path.basename(t) in LANE_SCRIPTS for t in current):
+            found.append("lane session control")
         nested_eager = eager or name in INTERPRETERS
         for arg in current:
             if re.search(r"\s", arg) and (nested_eager or re.search(r"\$\(|`|<\(", arg)):

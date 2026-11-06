@@ -30,7 +30,7 @@ Instructions come from your brief and from your coordinator's messages (the sess
 
 ## LOG.md
 
-Append-only. Each entry starts `## <YYYY-MM-DD HH:MM> <KIND>: <title>`, KIND one of DECISION, DEAD-END, QUESTION, BLOCKED, REFUSED, MILESTONE, HANDOFF, DONE. HANDOFF is for a session ending with work unfinished (you were told to stop, or context is running out): what's in flight, anything uncommitted, the next step. The body says what and why, with evidence: commands run and their results, commit ids. Don't record routine progress; commits are progress. Write the entry before signalling, so it exists even if your session dies.
+Append-only; write entries with the Write or Edit tool, not shell heredocs. Each entry starts `## <YYYY-MM-DD HH:MM> <KIND>: <title>`, the time from `date '+%F %H:%M'`, KIND one of DECISION, DEAD-END, QUESTION, BLOCKED, REFUSED, MILESTONE, HANDOFF, DONE. HANDOFF is for a session ending with work unfinished (you were told to stop, or context is running out): what's in flight, anything uncommitted, the next step. The body says what and why, with evidence: commands run and their results, commit ids. Don't record routine progress; commits are progress. Write the entry before signalling, so it exists even if your session dies.
 
 ## Signal
 
