@@ -60,4 +60,51 @@ settings='{"crossSessionInbound":"accept","permissions":{"deny":[
 prompt="You are lane $name. Read ~/.claude/skills/lanes/worker.md, then your brief at $brief, and follow both. Commit on your branch without asking; you never push. Rebuild your state from the brief, your LOG.md and git in this worktree; nothing else carries over."
 
 cd "$worktree"
-exec claude --bg "$prompt" -n "$name" --add-dir "$lane_dir" --settings "$settings" "$@"
+jobs_dir=${CLAUDE_CONFIG_DIR:-$HOME/.claude}/jobs
+projects_dir=${CLAUDE_CONFIG_DIR:-$HOME/.claude}/projects
+
+launch() {
+  local out
+  out=$(claude --bg "$prompt" -n "$name" --add-dir "$lane_dir" --settings "$settings" "$@")
+  echo "$out" >&2
+  grep -oE 'backgrounded · [0-9a-f]+' <<<"$out" | awk '{print $3}'
+}
+
+started() {
+  python3 -I - "$jobs_dir/$1/state.json" "$projects_dir" <<'EOF'
+import json, os, re, sys
+try:
+    job = json.load(open(sys.argv[1]))
+except (OSError, ValueError):
+    sys.exit(1)
+transcript = os.path.join(sys.argv[2], re.sub(r"[^A-Za-z0-9]", "-", job["cwd"]), job["sessionId"] + ".jsonl")
+sys.exit(0 if os.path.exists(transcript) else 1)
+EOF
+}
+
+wait_started() {
+  for _ in $(seq 30); do
+    started "$1" && return 0
+    sleep 3
+  done
+  return 1
+}
+
+# A slow CLI wrapper can bring a cold daemon's first spare up after it's claimed, and the lane hangs at
+# "starting…" with no transcript. A second launch goes to a warm spare while the first keeps the daemon up.
+id=$(launch "$@")
+[[ -n $id ]] || { echo "could not read the lane id from claude --bg" >&2; exit 1; }
+if wait_started "$id"; then
+  echo "$id"
+  exit 0
+fi
+echo "lane $id never started; relaunching" >&2
+retry=$(launch "$@")
+if [[ -n $retry ]] && wait_started "$retry"; then
+  claude stop "$id" >/dev/null 2>&1 || true
+  claude rm "$id" >/dev/null 2>&1 || true
+  echo "$retry"
+  exit 0
+fi
+echo "lane never started (ids: $id ${retry:-none}); stop and rm both, then tell the user" >&2
+exit 1
