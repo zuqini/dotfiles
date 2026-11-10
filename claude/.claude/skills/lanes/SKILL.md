@@ -9,7 +9,7 @@ A lane is a named background Claude session that owns one workstream of a task: 
 
 ## Subagents first, lanes when they stop scaling
 
-Default to one session with subagents (Agent tool, `/orchestrate`, `loop/rN/` rounds). Each starts clean, it's cheaper, and there's no lossy handoff.
+Default to one session with subagents (Agent tool, `/review-loop`, `loop/rN/` rounds). Each starts clean, it's cheaper, and there's no lossy handoff.
 
 Their weak point is you: every report and coordination turn piles up in the coordinator's context, which is where decisions get made.
 
@@ -114,7 +114,7 @@ Handoffs drop detail, and lanes report confidently either way. A lane keeps work
 
 1. Run `accept.sh <N>` yourself, in the lane's worktree.
 2. Read the diff (`git -C <lane-worktree> diff <slug>...HEAD`), not the lane's summary of it.
-3. `/review` that diff: reviewers who haven't heard the lane's story.
+3. `/code-review` that range (`<slug>...<lane-branch>`, from the lane's worktree): reviewers who haven't heard the lane's story.
 4. Read the lane's DECISION entries next to the other lanes'. Disjoint files don't stop two lanes picking different conventions (error handling, naming, a dependency); parallel writers make conflicting choices they can't see. Settle a clash in the ledger and update the briefs before integrating either side.
 5. Integrate the milestone's commit, not the moving branch tip: one lane at a time into `<slug>` in `<repo>.tmp` (the repo's merge style), and run the full suite after each. Tell lanes touching adjacent code to rebase. A conflict means two lanes' assumptions drifted: settle it in the ledger, then update the affected briefs.
 6. The PR rules in `~/workspace/CLAUDE.md` apply unchanged: you push, the user approves title and description. A lane that ships on its own can be its own PR, still through you.

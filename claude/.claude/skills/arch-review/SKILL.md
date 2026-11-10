@@ -1,9 +1,9 @@
 ---
 name: arch-review
-description: "System / module-scope architectural review. Defaults to the whole project; pass paths to scope to specific modules or workers. Heavy-duty pass on layering, SOLID, scalability, and maintainability. For per-change/per-diff design review, use /review instead."
+description: "System / module-scope architectural review. Defaults to the whole project; pass paths to scope to specific modules or workers. Heavy-duty pass on layering, SOLID, scalability, and maintainability. For per-change/per-diff review, use /code-review instead."
 ---
 
-Run a thorough **system or module-scope** architectural review using the **architecture-reviewer** subagent. This is the heavyweight pass — read structure, form a mental map, evaluate the four pillars. For per-change design feedback, route to `/review`.
+Run a thorough **system or module-scope** architectural review using the **architecture-reviewer** subagent. This is the heavyweight pass — read structure, form a mental map, evaluate the four pillars. For per-change feedback, route to `/code-review`.
 
 ## Target selection
 
@@ -32,7 +32,7 @@ Spawn `architecture-reviewer` with:
 
 @~/.claude/skills/_shared/review-decisions-capture.md
 
-## When to use this vs `/review`
+## When to use this vs `/code-review`
 
 - Use **`/arch-review`** when: evaluating the design of a whole project or a module/subsystem; auditing several related workers or services together; doing a quarterly health check; deciding whether to refactor a subsystem.
-- Use **`/review`** when: you just wrote or staged a change and want bug, completeness, and design feedback on the diff itself.
+- Use **`/code-review`** when: you just wrote or staged a change and want feedback on the diff itself. `/review-loop` when a PR should be reviewed and fixed until clean.
