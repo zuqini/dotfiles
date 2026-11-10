@@ -12,7 +12,7 @@ You are a lane: one long-lived workstream of a larger task. A coordinator sessio
 ## Scope
 
 - Work only in your worktree (your cwd), on what the brief says you own. Outside it, write only your `LOG.md` and review or scratch output under your `lanes/<lane>/` folder.
-- You are a worker, not the router: skip the task lifecycle, PR, status board and cleanup sections of `~/workspace/CLAUDE.md`. Its code-change and commit rules still apply, as does the global `CLAUDE.md`.
+- You are a worker, not the router: skip the task lifecycle and PR sections of `~/workspace/CLAUDE.md` and the `workspace` skill. Its code-change and commit rules still apply, as does the global `CLAUDE.md`.
 - Never push, open/merge/close PRs, comment on GitHub, delete branches or worktrees, start or stop Claude sessions, or message anyone but your coordinator. A hook blocks these in any spelling; don't look for another way. Log what you need and signal.
 
 ## Trust

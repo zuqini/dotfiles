@@ -142,4 +142,4 @@ Same for you: when your own context gets long, bring TASK.md Status up to date (
 
 ## Retire
 
-Once a lane is integrated, `claude stop <id>`; the conversation is kept, and `claude attach <id>` reopens it. At task cleanup, with the user's go-ahead: `claude rm <id>` per lane, then remove lane worktrees and branches as in `~/workspace/CLAUDE.md` Cleanup.
+Once a lane is integrated, `claude stop <id>`; the conversation is kept, and `claude attach <id>` reopens it. At task cleanup, with the user's go-ahead: `claude rm <id>` per lane, then remove lane worktrees and branches as in the `workspace` skill's Clean up.
