@@ -34,6 +34,15 @@ clone_if_missing() {
   fi
 }
 
+stow_pkgs() {
+  stow -d "$DOTFILES_PATH" -t "$HOME" "$@"
+}
+
+# only uninitialized submodules, so a re-run never resets ones you've moved
+git -C "$DOTFILES_PATH" submodule status | awk '/^-/ {print $2}' | while read -r path; do
+  git -C "$DOTFILES_PATH" submodule update --init --recursive -- "$path"
+done
+
 # Core dependencies first
 if ! command -v brew &>/dev/null; then
   echo "Installing Homebrew"
@@ -60,7 +69,7 @@ brew_install rg ripgrep
 brew_install ast-grep
 
 # terminals
-brew_install ghostty
+brew_cask_install ghostty
 brew_install zellij
 
 # tiling window manager
@@ -94,10 +103,13 @@ else
   echo "bob-nvim already installed"
 fi
 
+# before oh-my-zsh, whose installer otherwise writes its own ~/.zshrc and makes stow conflict
+stow_pkgs zshrc
+
 # oh-my-zsh (idempotent)
 if [[ ! -d ~/.oh-my-zsh ]]; then
   echo "Installing oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 else
   echo "oh-my-zsh already installed"
 fi
@@ -106,35 +118,34 @@ fi
 brew_cask_install font-iosevka
 
 # stow packages
-stow zshrc
-stow zellij
+stow_pkgs zellij
 
 # oh-my-zsh theme (idempotent symlink)
 mkdir -p ~/.oh-my-zsh/custom/themes
 ln -sf "${DOTFILES_PATH}/misc/themes/oh-my-zsh/lambdim-zsh-theme/lambdim.zsh-theme" ~/.oh-my-zsh/custom/themes/lambdim.zsh-theme
 
 # macos tiling windows manager and bar
-stow aerospace sketchybar
+stow_pkgs aerospace sketchybar
 
 # editors
-stow nvim idea doom
+stow_pkgs nvim idea doom
 
 # AI
-stow claude
+stow_pkgs claude
 
 # tmux
-stow tmux
+stow_pkgs tmux
 clone_if_missing https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-stow herdr
-stow yazi
+stow_pkgs herdr
+stow_pkgs yazi
 
 # terminal configs
-stow wezterm ghostty kitty
+stow_pkgs wezterm ghostty kitty
 
 # global git configs
-stow gitconfig
-stow gitignore
+stow_pkgs gitconfig
+stow_pkgs gitignore
 
 # zsh plugins (idempotent)
 zsh_plugins="${ZSH_CUSTOM:-${ZSH:-$HOME/.oh-my-zsh}/custom}/plugins"
@@ -154,12 +165,22 @@ else
   echo "wezterm terminfo already installed"
 fi
 
-# browser screenshot utility
-if [[ ! -d "${DOTFILES_PATH}/utilities/browser-screenshot/node_modules" ]]; then
-  echo "Installing browser-screenshot dependencies"
-  (cd "${DOTFILES_PATH}/utilities/browser-screenshot" && npm install && npx playwright install chromium)
-else
+# browser screenshot utility; nvm is only loaded by interactive zsh, so source it here
+nvm_sh="${NVM_DIR:-$HOME/.nvm}/nvm.sh"
+if [[ -d "${DOTFILES_PATH}/utilities/browser-screenshot/node_modules" ]]; then
   echo "browser-screenshot already installed"
+elif ! command -v npm &>/dev/null && [[ ! -s $nvm_sh ]]; then
+  echo "Skipping browser-screenshot: no npm or nvm. Install Node, then rerun."
+else
+  echo "Installing browser-screenshot dependencies"
+  (
+    if ! command -v npm &>/dev/null; then
+      set +eu
+      . "$nvm_sh"
+      set -eu
+    fi
+    cd "${DOTFILES_PATH}/utilities/browser-screenshot" && npm install && npx playwright install chromium
+  )
 fi
 
 echo "Done!"
