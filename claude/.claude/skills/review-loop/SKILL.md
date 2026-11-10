@@ -14,7 +14,7 @@ You are the orchestrator of a review → fix loop on `$ARGUMENTS`. You route wor
    - Otherwise make `~/workspace/<repo>-pr<N>/` with a TASK.md (Status: repo, PR URL; Goal: drive PR to a clean review) and `git -C ~/projects/<repo> fetch origin <headRefName>`, then `git -C ~/projects/<repo> worktree add ~/workspace/<repo>-pr<N>/<repo>.tmp -b <headRefName> --track origin/<headRefName>`. Cross-repo (fork) PR: fetch `pull/<N>/head` into a local branch instead, and note you can't push to it.
    - The worktree must be clean and its tip equal to `headRefOid` or ahead of it. Report anything else before starting.
 3. **Repo rules.** Read the repo's `CLAUDE.md`, `AGENTS.md` and any docs they point at for conventions, test policy and required gates. These are rules for the fixer and grading criteria for findings, not background.
-4. **Ledger.** Load prior decisions as `~/.claude/skills/_shared/review-decisions-preamble.md` says (decision beads, or `.claude/review-decisions.md`). List the decision beads anchored on files the PR deletes or rewrites: each is a behaviour the new code must keep or consciously drop, and goes in the brief as a parity checklist item.
+4. **Ledger.** Load prior decisions as `decisions-load.md` in this skill says (decision beads, or `.claude/review-decisions.md`). List the decision beads anchored on files the PR deletes or rewrites: each is a behaviour the new code must keep or consciously drop, and goes in the brief as a parity checklist item.
 5. **Gates.** From the repo rules, README, `package.json`/Makefile and CI config, write the exact commands that must pass (build, typecheck, lint, format, tests, coverage thresholds, e2e, visual checks for UI changes). Run them once on the untouched PR so you know the baseline: a gate that already fails isn't the loop's regression, but say so in the final report.
 6. **Write `<task>/review-loop/BRIEF.md`**: PR facts, base ref, repo rules that matter (paths, not copies), gates, the ledger listing, the parity checklist, the severity bar below, and the lessons section below. Every reviewer and fixer you spawn reads it first.
 
@@ -41,7 +41,7 @@ Files go under `<task>/review-loop/r<N>/`.
    - Every fixed bug gets a test that fails without the fix: revert the fix, see the test fail, restore. Respect the repo's test policy (mock boundaries, placement).
    - Fix the class, not the instance: grep for the same pattern elsewhere in the PR's diff and fix those too, noting them in triage.
    - Run the gates. One commit per finding, in the repo's commit style, on the branch. Never push, comment on GitHub or touch other branches.
-   - Record each Invalid or Nit with a non-obvious, likely-to-recur reason as the ledger says (`~/.claude/skills/_shared/review-decisions-capture.md`), so later rounds don't refile it.
+   - Record each Invalid or Nit with a non-obvious, likely-to-recur reason as the ledger says (`decisions-record.md` in this skill), so later rounds don't refile it.
 4. **Verify the fixer, don't trust it.** Re-run every gate yourself. Read the round's diff: each change maps to a triaged finding, nothing else. Spot-check one mutation (revert a fix, a test fails). For UI changes, do the repo's visual check. Anything wrong goes back to the fixer as a correction.
 5. **Decide.**
    - Zero critical/should-fix in triage → run the final gate.
