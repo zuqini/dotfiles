@@ -70,41 +70,62 @@ launch() {
   grep -oE 'backgrounded · [0-9a-f]+' <<<"$out" | awk '{print $3}'
 }
 
-started() {
+# Prints started, settled (ended without a transcript) or pending.
+status() {
   python3 -I - "$jobs_dir/$1/state.json" "$projects_dir" <<'EOF'
 import json, os, re, sys
 try:
     job = json.load(open(sys.argv[1]))
 except (OSError, ValueError):
-    sys.exit(1)
+    print("pending")
+    sys.exit()
 transcript = os.path.join(sys.argv[2], re.sub(r"[^A-Za-z0-9]", "-", job["cwd"]), job["sessionId"] + ".jsonl")
-sys.exit(0 if os.path.exists(transcript) else 1)
+print("started" if os.path.exists(transcript) else "pending" if job.get("state") in (None, "working") else "settled")
 EOF
 }
 
 wait_started() {
+  local st
   for _ in $(seq 30); do
-    started "$1" && return 0
-    sleep 3
+    st=$(status "$1")
+    [[ $st != pending ]] && { echo "$st"; return; }
+    sleep 2
   done
-  return 1
+  echo hung
 }
 
-# A slow CLI wrapper can bring a cold daemon's first spare up after it's claimed, and the lane hangs at
-# "starting…" with no transcript. A second launch goes to a warm spare while the first keeps the daemon up.
-id=$(launch "$@")
-[[ -n $id ]] || { echo "could not read the lane id from claude --bg" >&2; exit 1; }
-if wait_started "$id"; then
-  echo "$id"
-  exit 0
-fi
-echo "lane $id never started; relaunching" >&2
-retry=$(launch "$@")
-if [[ -n $retry ]] && wait_started "$retry"; then
-  claude stop "$id" >/dev/null 2>&1 || true
-  claude rm "$id" >/dev/null 2>&1 || true
-  echo "$retry"
-  exit 0
-fi
-echo "lane never started (ids: $id ${retry:-none}); stop and rm both, then tell the user" >&2
+drop() {
+  claude stop "$1" >/dev/null 2>&1 || true
+  claude rm "$1" >/dev/null 2>&1 || true
+}
+
+# A slow CLI wrapper can bring a cold daemon's first spare up too late. The lane then either ends within seconds
+# or hangs at "starting…", with no transcript either way. A hung lane keeps the daemon and its next spare warm,
+# so one relaunch gets a ready spare; a lane that ended let the daemon exit, so the relaunch is cold again.
+hung=() ids=()
+for attempt in 1 2 3 4; do
+  id=$(launch "$@")
+  [[ -n $id ]] || { echo "could not read the lane id from claude --bg" >&2; exit 1; }
+  ids+=("$id")
+  case $(wait_started "$id") in
+    started)
+      for h in "${hung[@]}"; do
+        if [[ $(status "$h") == started ]]; then
+          echo "lane $h started late; $id is a duplicate of it, stop one" >&2
+        else
+          drop "$h"
+        fi
+      done
+      echo "$id"
+      exit 0
+      ;;
+    settled) drop "$id"; echo "lane $id ended before starting; relaunching" >&2 ;;
+    hung)
+      hung+=("$id")
+      echo "lane $id hung at start; relaunching" >&2
+      [[ ${#hung[@]} -ge 2 ]] && break
+      ;;
+  esac
+done
+echo "lane never started (ids: ${ids[*]}); stop and rm any still listed, then tell the user" >&2
 exit 1
